@@ -1,11 +1,11 @@
 <template>
   <div id="app">
     <header>
-      <span>Vue.js PWA</span>
+    <router-view></router-view>
     </header>
     <main>
       <img src="./assets/logo.png" alt="Vue.js PWA">
-      <router-view></router-view>
+
     </main>
   </div>
 </template>
@@ -15,7 +15,6 @@ export default {
   name: 'app'
 }
 </script>
-
 <style>
 body {
   margin: 0;
@@ -35,10 +34,13 @@ main {
 
 header {
   margin: 0;
-  height: 56px;
   padding: 0 16px 0 24px;
-  background-color: #35495E;
+  background-color: #a0d4dc;
   color: #ffffff;
+}
+.header{
+  display: flex;
+  justify-content: space-between;
 }
 
 header span {
