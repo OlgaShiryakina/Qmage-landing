@@ -3,10 +3,16 @@
     <header>
       <span>Vue.js PWA</span>
     </header>
-    <main>
-      <img src="./assets/logo.png" alt="Vue.js PWA">
-      <router-view></router-view>
-    </main>
+    <div class="main">
+      <section class="sectionTop"></section>
+      <section class="sectionInfo">
+        <a class="button is-white">White</a>
+        <a class="button is-light">Light</a>
+        <a class="button is-dark">Dark</a>
+        <a class="button is-black">Black</a>
+        <a class="button is-link">Link</a>
+      </section>
+    </div>
   </div>
 </template>
 
@@ -16,7 +22,8 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+  @import '~bulma';
 body {
   margin: 0;
 }
