@@ -1,6 +1,6 @@
 <template>
-  <div class="header">
-    <img src="../assets/logo.png" alt="">
+  <header class="header">
+    <img src="../../assets/logo.png" alt="">
     <nav>
       <ul>
         <li v-for="item in items"><a href="#">
@@ -8,7 +8,7 @@
         </a></li>
       </ul>
     </nav>
-  </div>
+  </header>
 </template>
 
 
