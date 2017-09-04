@@ -3,16 +3,9 @@
     <header>
     <router-view></router-view>
     </header>
-    <div class="main">
+    <main class="main">
       <section class="sectionTop"></section>
-      <section class="sectionInfo">
-        <a class="button is-white">White</a>
-        <a class="button is-light">Light</a>
-        <a class="button is-dark">Dark</a>
-        <a class="button is-black">Black</a>
-        <a class="button is-link">Link</a>
-      </section>
-    </div>
+    </main>
   </div>
 </template>
 
@@ -23,6 +16,7 @@ export default {
 </script>
 <style lang="scss">
   @import '~bulma';
+
 body {
   margin: 0;
 }
@@ -37,6 +31,7 @@ body {
 main {
   text-align: center;
   margin-top: 40px;
+  padding:100px 20px 0;
 }
 
 header {

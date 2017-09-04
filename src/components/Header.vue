@@ -32,7 +32,13 @@
   }
 </script>
 
-<style scoped>
+<style>
+  header{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+  }
   nav ul{
     display: flex;
     justify-content: space-around;
@@ -47,12 +53,20 @@
   a{
     color: #124442;
     text-decoration: none;
+    padding:10px 20px;
+    display: flex;
+    align-items: center;
+    height:100%;
   }
   li{
-    padding:10px 20px;
+
     height: 100%;
     display: flex;
     align-items: center;
     box-sizing: border-box;
+  }
+  .hero{
+    align-items: center;
+    flex-direction: row;
   }
 </style>
