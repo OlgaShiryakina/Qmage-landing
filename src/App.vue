@@ -1,8 +1,6 @@
 <template>
   <div id="app">
-    <header>
-    <header-info></header-info>
-    </header>
+    <block-header></block-header>
     <div class="main">
       <section-top></section-top>
       <section-info></section-info>
@@ -12,17 +10,18 @@
 </template>
 
 <script>
-  import headerInfo from '@/components/Header.vue'
+  import blockHeader from '@/components/layout/header.vue'
   import sectionTop from '@/components/section/sectionTop.vue'
   import sectionInfo from '@/components/section/sectionInfo.vue'
   import sectionTeam from '@/components/section/sectionTeam.vue'
+
   export default {
     name: 'app',
     components: {
+      blockHeader,
       sectionInfo,
       sectionTop,
-      sectionTeam,
-      headerInfo
+      sectionTeam
     }
   }
 </script>
