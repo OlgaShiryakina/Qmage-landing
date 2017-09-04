@@ -1,18 +1,30 @@
 <template>
   <div id="app">
     <header>
-    <router-view></router-view>
+    <header-info></header-info>
     </header>
-    <main class="main">
-      <section class="sectionTop"></section>
-    </main>
+    <div class="main">
+      <section-top></section-top>
+      <section-info></section-info>
+      <section-team></section-team>
+    </div>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'app'
-}
+  import headerInfo from '@/components/Header.vue'
+  import sectionTop from '@/components/section/sectionTop.vue'
+  import sectionInfo from '@/components/section/sectionInfo.vue'
+  import sectionTeam from '@/components/section/sectionTeam.vue'
+  export default {
+    name: 'app',
+    components: {
+      sectionInfo,
+      sectionTop,
+      sectionTeam,
+      headerInfo
+    }
+  }
 </script>
 <style lang="scss">
   @import '~bulma';
@@ -31,9 +43,11 @@ body {
 main {
   text-align: center;
   margin-top: 40px;
-  padding:100px 20px 0;
 }
+.main{
+  padding:100px 20px 0;
 
+}
 header {
   margin: 0;
   padding: 0 16px 0 24px;
