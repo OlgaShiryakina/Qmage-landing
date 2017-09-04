@@ -4,22 +4,25 @@
     <router-view></router-view>
     </header>
     <div class="main">
-      <section class="sectionTop"></section>
-      <section class="sectionInfo">
-        <a class="button is-white">White</a>
-        <a class="button is-light">Light</a>
-        <a class="button is-dark">Dark</a>
-        <a class="button is-black">Black</a>
-        <a class="button is-link">Link</a>
-      </section>
+      <section-top></section-top>
+      <section-info></section-info>
+      <section-team></section-team>
     </div>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'app'
-}
+  import sectionTop from '@/components/section/sectionTop.vue'
+  import sectionInfo from '@/components/section/sectionInfo.vue'
+  import sectionTeam from '@/components/section/sectionTeam.vue'
+  export default {
+    name: 'app',
+    components: {
+      sectionInfo,
+      sectionTop,
+      sectionTeam
+    }
+  }
 </script>
 <style lang="scss">
   @import '~bulma';
