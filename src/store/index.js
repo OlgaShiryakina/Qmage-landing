@@ -7,7 +7,7 @@ const store = new Vuex.Store({
   state: {
     mainData: {
       title: 'Console24',
-      slogan: 'Полный и легкий контроль за вашей электронной комерцией!',
+      slogan: 'Полный и легкий контроль за <br> вашей электронной комерцией!',
       phones: [
         {
           name: 'MTC',

@@ -33,33 +33,16 @@
 </script>
 <style lang="scss">
   @import '~bulma';
-body {
-  margin: 0;
-  font: 14px/1.5 Arial, sans-serif;
-  overflow-x: hidden;
-  word-wrap: break-word;
-}
-.main{
-}
-header {
-  margin: 0;
-  padding: 0 16px 0 24px;
-  background-color: #a0d4dc;
-  color: #ffffff;
-}
-.header{
-  display: flex;
-  justify-content: space-between;
-}
-
-header span {
-  display: block;
-  position: relative;
-  font-size: 20px;
-  line-height: 1;
-  letter-spacing: .02em;
-  font-weight: 400;
-  box-sizing: border-box;
-  padding-top: 16px;
-}
+  body {
+    margin: 0;
+    font: 14px/1.5 Arial, sans-serif;
+    overflow-x: hidden;
+    word-wrap: break-word;
+  }
+  h1, h2, h3, h4, h5, h6{
+    line-height: 1;
+  }
+  h1{
+    font-size: 84px;
+  }
 </style>
