@@ -4,6 +4,7 @@
     <div class="main">
       <section-top></section-top>
       <section-info></section-info>
+      <section-form></section-form>
       <section-team></section-team>
       <section-review></section-review>
     </div>
@@ -15,6 +16,7 @@
   import blockHeader from '@/components/layout/header.vue'
   import sectionTop from '@/components/section/sectionTop.vue'
   import sectionInfo from '@/components/section/sectionInfo.vue'
+  import sectionForm from '@/components/section/sectionForm.vue'
   import sectionTeam from '@/components/section/sectionTeam.vue'
   import sectionReview from '@/components/section/sectionReview.vue'
   import blockFooter from '@/components/layout/footer.vue'
@@ -24,6 +26,7 @@
     components: {
       blockHeader,
       sectionInfo,
+      sectionForm,
       sectionTop,
       sectionTeam,
       sectionReview,
@@ -33,6 +36,7 @@
 </script>
 <style lang="scss">
   @import '~bulma';
+  @import 'scss/variables';
   body {
     margin: 0;
     font: 14px/1.5 Arial, sans-serif;
@@ -43,6 +47,12 @@
     line-height: 1;
   }
   h1{
-    font-size: 84px;
+    @include responsive(minTablet){font-size: 84px;}
+    @include responsive(maxTablet){font-size: 40px;}
+  }
+  .container{
+    @include responsive(maxTablet){
+      padding: 0 10px;
+    }
   }
 </style>

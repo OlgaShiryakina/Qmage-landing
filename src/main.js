@@ -4,6 +4,9 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
+import vueScrollto from 'vue-scrollto'
+
+Vue.use(vueScrollto)
 
 import 'font-awesome/css/font-awesome.css'
 

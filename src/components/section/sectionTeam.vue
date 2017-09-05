@@ -1,5 +1,5 @@
 <template>
-  <section class="sectionTeam dark-grad">
+  <section id="sectionTeam" class="sectionTeam dark-grad">
     <div class="container">
       <h2 class="title is-1 title__light">OUR TEAM</h2>
         <div class="container members">
@@ -71,30 +71,24 @@
     color: #292525;
     text-align: center;
   }
-.member{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  &>img{
-    height:140px;
+  .member{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    &>img{
+      height:140px;
+    }
+    strong{
+      color: #f1f1f1;
+    }
   }
-  strong{
-    color: #f1f1f1;
-  }
-}
   .members{
     display: flex;
     justify-content: space-around;
   }
-
-.member:nth-child(2n+1){
-  padding:40px 0 0 0;
-}
-  ul{
-    display: flex;
-    justify-content: space-around;
-    width:100%;
+  .member:nth-child(2n+1){
+    padding:40px 0 0 0;
   }
   .member{
     strong{
@@ -102,6 +96,11 @@
     }
     span{
       font-size:17px;
+    }
+    ul{
+      display: flex;
+      justify-content: space-around;
+      width:100%;
     }
     li{
       a{

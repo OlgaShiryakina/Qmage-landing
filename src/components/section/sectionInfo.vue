@@ -1,5 +1,5 @@
 <template>
-  <section class="sectionInfo light_theme">
+  <section id="sectionInfo" class="sectionInfo light_theme">
     <div class="container">
   <tabs animation="slide" :only-fade="false">
     <tab-pane label="Lorem">

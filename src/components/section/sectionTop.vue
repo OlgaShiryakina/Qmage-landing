@@ -1,5 +1,5 @@
 <template>
-  <section class="sectionTop dark-grad">
+  <section id="sectionTop" class="sectionTop dark-grad">
     <div class="container level">
       <div>
         <h1>{{ mainData.title }}</h1>
@@ -93,13 +93,15 @@
       padding: 10% 0;
     }
     &__slogan{
-      text-align: justify;
-      -moz-text-align-last: justify;
-      text-align-last: justify;
-      font-size: 20px;
-      letter-spacing: 4px;
-      line-height: 0.8;
-      margin: -9px 0 0 3px;
+      @include responsive(minTablet){
+        text-align: justify;
+        -moz-text-align-last: justify;
+        text-align-last: justify;
+        font-size: 20px;
+        letter-spacing: 4px;
+        line-height: 0.8;
+        margin: -9px 0 0 3px;
+      }
     }
   }
 </style>

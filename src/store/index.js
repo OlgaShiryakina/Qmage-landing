@@ -24,24 +24,24 @@ const store = new Vuex.Store({
       isActive: 0,
       items: [
         {
-          name: 'item1',
+          name: 'Home',
           link: 'sectionTop'
         },
         {
-          name: 'item2',
+          name: 'Info',
           link: 'sectionInfo'
         },
         {
-          name: 'item3',
+          name: 'FastStart',
+          link: 'sectionForm'
+        },
+        {
+          name: 'Team',
           link: 'sectionTeam'
         },
         {
-          name: 'item4',
-          link: 'sectionForm'
-        },
-        {
-          name: 'item5',
-          link: 'sectionForm'
+          name: 'Review',
+          link: 'sectionReview'
         }
       ]
     }

@@ -1,16 +1,16 @@
 <template>
-  <footer class="footer level dark-grad">
-    <div class="container">
+  <footer class="footer dark-grad">
+    <div class="container level">
       <div class="footer__logo"><img src="../../assets/logo.png" :alt="mainData.title"></div>
       <ul class="footer__phones">
         <li v-for="item in mainData.phones">
-          <span class="icon">
-            <i class="fa fa-phone-o"></i>
+          <span class="icon is-small">
+            <i class="fa fa-phone"></i>
           </span>
-          {{ item.phone }}
+          {{ item.name }} : {{ item.phone }}
         </li>
         <li>
-          <span class="icon">
+          <span class="icon is-small">
             <i class="fa fa-envelope-o"></i>
           </span>
           {{ mainData.email }}
@@ -36,37 +36,14 @@
   }
 </script>
 
-<style>
-  header{
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-  }
-  nav ul{
-    display: flex;
-    justify-content: space-around;
-    list-style: none;
-    height:100%;
-    margin:0;
+<style lang="scss">
+  @import '../../scss/variables';
+  .footer{
+    &__logo{
+      width: 80px;
+    }
+    &__phones{
 
-  }
-  img{
-    height:80px;
-  }
-  a{
-    color: #124442;
-    text-decoration: none;
-    padding:10px 20px;
-    display: flex;
-    align-items: center;
-    height:100%;
-  }
-  li{
-
-    height: 100%;
-    display: flex;
-    align-items: center;
-    box-sizing: border-box;
+    }
   }
 </style>

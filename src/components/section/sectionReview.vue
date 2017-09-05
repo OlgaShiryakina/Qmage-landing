@@ -1,8 +1,8 @@
 <template>
-  <section class="sectionReview light_theme">
+  <section id="sectionReview" class="sectionReview light_theme">
     <div class="container">
       <h2 class="title is-1 title__dark">Отзывы</h2>
-      <div class="section sectionReview">
+      <div class="section">
         <div class="box">
           <article class="media">
             <div class="media-left">

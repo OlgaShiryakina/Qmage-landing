@@ -1,18 +1,15 @@
 <template>
   <header class="header">
-    <div class="container">
-      <!--<div class="logo is-flex">{{ mainData.title }}</div>-->
-      <ul>
+    <div class="container level">
+      <div class="logo is-flex">{{ mainData.title }}</div>
+      <ul class="header__nav is-flex">
         <li v-for="item in nav.items">
-          <a :href="item.link">{{ item.name }}</a>
+          <a v-scroll-to="'#' + item.link" href="javascript:void(0);">{{ item.name }}</a>
         </li>
       </ul>
     </div>
   </header>
 </template>
-
-
-
 
 <script>
   import { mapGetters } from 'vuex'
@@ -28,6 +25,11 @@
         nav: 'getNav',
         mainData: 'getMainData'
       })
+    },
+    methods: {
+      moveTo (section) {
+        console.log(section)
+      }
     }
   }
 </script>
@@ -40,6 +42,19 @@
     top: 0;
     left: 0;
     z-index: 10;
-    height: $headerHeight;
+    color: #fff;
+    background: #000;
+    .container{height: $headerHeight;}
+    .logo{
+      font-size: 20px;
+    }
+    &__nav{
+      li{
+        padding: 0 10px;
+      }
+      a{
+        color: #fff;
+      }
+    }
   }
 </style>
