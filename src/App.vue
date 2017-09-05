@@ -58,7 +58,7 @@ header {
   padding: 0 16px 0 24px;
   color: #ffffff;
 }
-.header{
+.header .container{
   display: flex;
   justify-content: space-between;
 }

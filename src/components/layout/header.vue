@@ -1,13 +1,16 @@
 <template>
   <header class="header">
-    <img src="../../assets/logo.png" alt="">
-    <nav>
-      <ul>
-        <li v-for="item in nav.items">
-          <a :href="item.link">{{ item.name }}</a>
-        </li>
-      </ul>
-    </nav>
+    <div class="container">
+      <img src="../../assets/logo.png" alt="">
+      <nav>
+        <ul>
+          <li v-for="item in nav.items">
+            <a :href="item.link">{{ item.name }}</a>
+          </li>
+        </ul>
+      </nav>
+
+    </div>
   </header>
 </template>
 
