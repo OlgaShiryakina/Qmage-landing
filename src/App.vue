@@ -33,9 +33,9 @@
 </script>
 <style lang="scss">
   @import '~bulma';
-
 body {
   margin: 0;
+  background: #f1f1f1;
 }
 
 #app {
@@ -50,7 +50,7 @@ main {
   margin-top: 40px;
 }
 .main{
-  padding:100px 20px 0;
+  padding:80px 20px 0;
 
 }
 header {
