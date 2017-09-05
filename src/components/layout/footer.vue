@@ -1,9 +1,19 @@
 <template>
-  <footer class="footer">
+  <footer class="footer level">
     <div class="footer__logo"><img src="../../assets/logo.png" :alt="mainData.title"></div>
     <ul class="footer__phones">
-      <li v-for="item in mainData.phones">{{ item.phone }}</li>
-      <li>{{ mainData.email }}</li>
+      <li v-for="item in mainData.phones">
+        <span class="icon">
+          <i class="fa fa-phone-o"></i>
+        </span>
+        {{ item.phone }}
+      </li>
+      <li>
+        <span class="icon">
+          <i class="fa fa-envelope-o"></i>
+        </span>
+        {{ mainData.email }}
+      </li>
     </ul>
   </footer>
 </template>

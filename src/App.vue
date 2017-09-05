@@ -6,8 +6,8 @@
       <section-info></section-info>
       <section-team></section-team>
       <section-review></section-review>
-      <block-footer></block-footer>
     </div>
+    <block-footer></block-footer>
   </div>
 </template>
 
