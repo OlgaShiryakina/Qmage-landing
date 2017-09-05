@@ -1,25 +1,24 @@
 <template>
-  <footer class="footer level">
-    <div class="footer__logo"><img src="../../assets/logo.png" :alt="mainData.title"></div>
-    <ul class="footer__phones">
-      <li v-for="item in mainData.phones">
-        <span class="icon">
-          <i class="fa fa-phone-o"></i>
-        </span>
-        {{ item.phone }}
-      </li>
-      <li>
-        <span class="icon">
-          <i class="fa fa-envelope-o"></i>
-        </span>
-        {{ mainData.email }}
-      </li>
-    </ul>
+  <footer class="footer level dark-grad">
+    <div class="container">
+      <div class="footer__logo"><img src="../../assets/logo.png" :alt="mainData.title"></div>
+      <ul class="footer__phones">
+        <li v-for="item in mainData.phones">
+          <span class="icon">
+            <i class="fa fa-phone-o"></i>
+          </span>
+          {{ item.phone }}
+        </li>
+        <li>
+          <span class="icon">
+            <i class="fa fa-envelope-o"></i>
+          </span>
+          {{ mainData.email }}
+        </li>
+      </ul>
+    </div>
   </footer>
 </template>
-
-
-
 
 <script>
   import { mapGetters } from 'vuex'
@@ -69,9 +68,5 @@
     display: flex;
     align-items: center;
     box-sizing: border-box;
-  }
-  .hero{
-    align-items: center;
-    flex-direction: row;
   }
 </style>
