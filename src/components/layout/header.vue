@@ -22,21 +22,15 @@
     },
     computed: {
       ...mapGetters({
-        nav: 'getNav',
-        mainData: 'getMainData'
+        nav: 'getNav'
       })
-    },
-    methods: {
-      moveTo (section) {
-        console.log(section)
-      }
     }
   }
 </script>
 
 <style lang="scss">
   @import '../../scss/variables';
-  .header{
+  .header {
     position: fixed;
     width: 100%;
     top: 0;
@@ -44,15 +38,17 @@
     z-index: 10;
     color: #fff;
     background: #000;
-    .container{height: $headerHeight;}
-    .logo{
+    .container {
+      height: $headerHeight;
+    }
+    .logo {
       font-size: 20px;
     }
-    &__nav{
-      li{
+    &__nav {
+      li {
         padding: 0 10px;
       }
-      a{
+      a {
         color: #fff;
       }
     }

@@ -37,6 +37,9 @@
 <style lang="scss">
   @import '~bulma';
   @import 'scss/variables';
+  .subtitle {
+    margin: 0 !important;
+  }
   body {
     margin: 0;
     font: 14px/1.5 Arial, sans-serif;
