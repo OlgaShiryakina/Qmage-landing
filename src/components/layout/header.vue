@@ -22,7 +22,8 @@
     },
     computed: {
       ...mapGetters({
-        nav: 'getNav'
+        nav: 'getNav',
+        mainData: 'getMainData'
       })
     }
   }
