@@ -3,9 +3,9 @@
     <img src="../../assets/logo.png" alt="">
     <nav>
       <ul>
-        <li v-for="item in items"><a href="#">
-          {{ item.navItem }}
-        </a></li>
+        <li v-for="item in nav.items">
+          <a :href="item.link">{{ item.name }}</a>
+        </li>
       </ul>
     </nav>
   </header>
@@ -15,6 +15,8 @@
 
 
 <script>
+  import { mapGetters } from 'vuex'
+
   export default{
     name: 'header',
     data () {
@@ -28,6 +30,11 @@
           {navItem: 'Item5'}
         ]
       }
+    },
+    computed: {
+      ...mapGetters({
+        nav: 'getNav'
+      })
     }
   }
 </script>
