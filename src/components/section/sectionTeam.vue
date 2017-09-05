@@ -76,12 +76,15 @@
     justify-content: space-around;
     width:100%;
   }
-  li{
-    a{
-      padding:0;
-      img{
-        height:20px;
+  .member{
+    li{
+      a{
+        padding:0;
+        img{
+          height:20px;
+        }
       }
     }
+
   }
 </style>
