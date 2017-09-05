@@ -46,6 +46,7 @@
     top: 0;
     left: 0;
     z-index: 30;
+    background: #d4d2d2;
   }
   nav ul{
     display: flex;

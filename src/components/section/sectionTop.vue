@@ -1,7 +1,7 @@
 <template>
   <section class="sectionTop dark-grad">
     <div class="container">
-      <h1 class="title">Lorem ipsum set</h1>
+      <h2 class="title is-1 title__light">Lorem ipsum set</h2>
       <div class="level">
         <div class="level-left">
           <div class="level-item">Lorem ipsum dolor sit.</div>
@@ -22,7 +22,7 @@
           </div>
         </div>
       </div>
-      <div class="hero is-primary hero-body">
+      <div class="hero is-primary hero-body box-item">
           <div class="container">
             <h1 class="title">
               Lorem ipsum dolor!
@@ -43,11 +43,50 @@
   .level-left{
     width:50%;
   }
-  .sectionTop{
-    padding:2rem 0;
-  }
+
+  .title__light, .title__dark{
+      &:after{
+        display: block;
+        content: '';
+        height: 8px;
+        width:100px;
+        background: #667eea;
+        margin: 10px auto;
+      }
+    }
+
   .dark-grad{
-    background: linear-gradient(to bottom, #a0a0a0 0%, #d0d0d0 100%);
     color: #fff;
+    padding:2rem 20px;
+    position: relative;
+    &:before{
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: .8;
+      background: linear-gradient(to bottom, #202226 0%, #131313 100%);
+
+    }
+  }
+  .subtitle{
+    color: #f1f1f1;
+  }
+  .hero.is-primary{
+    background: #fff;
+
+    .title{
+      color: #333333;
+    }
+    .subtitle{
+      color: #9e9e9e;
+    }
+  }
+  .box-item{
+    border-radius: 10px;
+    box-shadow: 0 7px 99px 0 rgba(58, 60, 65, 0.1);
+    border: 1px solid #ededed;
   }
 </style>

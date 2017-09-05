@@ -50,13 +50,12 @@ main {
   margin-top: 40px;
 }
 .main{
-  padding:80px 20px 0;
+  padding:80px 0 0;
 
 }
 header {
   margin: 0;
   padding: 0 16px 0 24px;
-  background-color: #a0d4dc;
   color: #ffffff;
 }
 .header{
@@ -74,4 +73,7 @@ header span {
   box-sizing: border-box;
   padding-top: 16px;
 }
+  .subtitle{
+    margin:0 !important;
+  }
 </style>

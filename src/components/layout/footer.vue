@@ -1,10 +1,13 @@
 <template>
-  <footer class="footer">
-    <div class="footer__logo"><img src="../../assets/logo.png" :alt="mainData.title"></div>
-    <ul class="footer__phones">
-      <li v-for="item in mainData.phones">{{ item.phone }}</li>
-      <li>{{ mainData.email }}</li>
-    </ul>
+  <footer class="footer dark-grad">
+    <div class="container">
+      <div class="footer__logo"><img src="../../assets/logo.png" :alt="mainData.title"></div>
+      <ul class="footer__phones">
+        <li v-for="item in mainData.phones">{{ item.phone }}</li>
+        <li>{{ mainData.email }}</li>
+      </ul>
+
+    </div>
   </footer>
 </template>
 
@@ -64,4 +67,5 @@
     align-items: center;
     flex-direction: row;
   }
+
 </style>
