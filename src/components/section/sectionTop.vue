@@ -1,5 +1,6 @@
 <template>
-  <section class="sectionTop container">
+  <section class="sectionTop dark-grad">
+    <div class="container">
       <h1 class="title">Lorem ipsum set</h1>
       <div class="level">
         <div class="level-left">
@@ -31,6 +32,7 @@
             </h2>
           </div>
       </div>
+    </div>
   </section>
 </template>
 <script>
@@ -40,5 +42,12 @@
 <style lang="scss">
   .level-left{
     width:50%;
+  }
+  .sectionTop{
+    padding:2rem 0;
+  }
+  .dark-grad{
+    background: linear-gradient(to bottom, #a0a0a0 0%, #d0d0d0 100%);
+    color: #fff;
   }
 </style>
