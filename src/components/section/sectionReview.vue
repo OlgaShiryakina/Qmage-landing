@@ -1,7 +1,7 @@
 <template>
-  <section class="sectionReview light_theme">
+  <section class="sectionReview dark-grad">
     <div class="container">
-      <h2 class="title is-1 title__dark">Отзывы</h2>
+      <h2 class="title is-1 title__light">Отзывы</h2>
       <div class="section sectionReview">
         <div class="box">
           <article class="media">

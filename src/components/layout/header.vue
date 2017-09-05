@@ -24,14 +24,6 @@
     name: 'header',
     data () {
       return {
-        msg: 'Hello',
-        items: [
-          {navItem: 'Item1'},
-          {navItem: 'Item2'},
-          {navItem: 'Item3'},
-          {navItem: 'Item4'},
-          {navItem: 'Item5'}
-        ]
       }
     },
     computed: {

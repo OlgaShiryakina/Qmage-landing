@@ -6,8 +6,8 @@
       <section-info></section-info>
       <section-team></section-team>
       <section-review></section-review>
-      <block-footer></block-footer>
     </div>
+    <block-footer></block-footer>
   </div>
 </template>
 
@@ -33,47 +33,19 @@
 </script>
 <style lang="scss">
   @import '~bulma';
-body {
-  margin: 0;
-  background: #f1f1f1;
-}
-
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-}
-
-main {
-  text-align: center;
-  margin-top: 40px;
-}
-.main{
-  padding:80px 0 0;
-
-}
-header {
-  margin: 0;
-  padding: 0 16px 0 24px;
-  color: #ffffff;
-}
-.header .container{
-  display: flex;
-  justify-content: space-between;
-}
-
-header span {
-  display: block;
-  position: relative;
-  font-size: 20px;
-  line-height: 1;
-  letter-spacing: .02em;
-  font-weight: 400;
-  box-sizing: border-box;
-  padding-top: 16px;
-}
-  .subtitle{
-    margin:0 !important;
+  .subtitle {
+    margin: 0 !important;
+  }
+  body {
+    margin: 0;
+    font: 14px/1.5 Arial, sans-serif;
+    overflow-x: hidden;
+    word-wrap: break-word;
+  }
+  h1, h2, h3, h4, h5, h6{
+    line-height: 1;
+  }
+  h1{
+    font-size: 84px;
   }
 </style>
