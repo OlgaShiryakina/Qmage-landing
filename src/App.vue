@@ -14,6 +14,7 @@
   import sectionTop from '@/components/section/sectionTop.vue'
   import sectionInfo from '@/components/section/sectionInfo.vue'
   import sectionTeam from '@/components/section/sectionTeam.vue'
+
   export default {
     name: 'app',
     components: {
@@ -26,6 +27,7 @@
 </script>
 <style lang="scss">
   @import '~bulma';
+
 body {
   margin: 0;
 }
@@ -41,7 +43,10 @@ main {
   text-align: center;
   margin-top: 40px;
 }
+.main{
+  padding:100px 20px 0;
 
+}
 header {
   margin: 0;
   padding: 0 16px 0 24px;
