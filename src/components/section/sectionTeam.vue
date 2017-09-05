@@ -1,7 +1,19 @@
 <template>
-  <section id="sectionTeam" class="sectionTeam dark-grad">
+  <section id="sectionTeam" class="sectionTeam light_theme">
     <div class="container">
-      <h2 class="title is-1 title__dark">OUR TEAM</h2>
+      <h2 class="title is-1 title__dark">Стать частью нашей команды</h2>
+
+      <div class="form-resume">
+        <form>
+          <textarea name="" id="" cols="30" rows="10" placeholder="Напишите что-нибудь про себя"></textarea>
+          <label class="file_upload">
+            <span class="button-send button-blue">Выбрать</span>
+            <mark>Файл не выбран</mark>
+            <input type="file">
+          </label>
+          <input class="button-send button-purple" type="submit">
+        </form>
+      </div>
         <swiper :options="swiperOption" class="container members">
           <swiper-slide class="member">
             <img src="../../assets/logo.png" alt="">
@@ -82,6 +94,7 @@
             </ul>
           </swiper-slide>
     </swiper>
+
     </div>
   </section>
 
@@ -130,6 +143,36 @@
     text-align: center;
     text-shadow: 1px 1px 3px #000;
   }
+  .sectionTeam{
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .button-send{
+    text-align: center;
+    display: inline-block;
+
+    border-radius: 20px;
+    padding: 7px 45px;
+    color: #fff;
+    transition: all .4s;
+    box-shadow: 0px 2px 2px 0px #000;
+    margin: 0 0 20px 0;
+    border:1px solid #5c637f;
+    font-size: 16px;
+    &:hover{
+      border-radius: 10px;
+    }
+    &.button-blue{
+      background: #667EEA;
+    }
+    &.button-purple{
+      background: #667eea;
+    }
+    &.button-blue-dark{
+      background: #6a5acd;
+    }
+  }
   .title__dark{
     text-shadow: 1px 1px 3px #f1f1f1;
     color: #35495e;
@@ -151,7 +194,6 @@
     display: flex;
     justify-content: space-around;
   }
-  .member:nth-child(2n+1){padding:40px 0 0 0;}
   .member{
     .devel{
       font-size:12px;
@@ -179,7 +221,7 @@
     }
     ul{
       display: flex;
-      justify-content: space-around;
+      justify-content: center;
       width:100%;
     }
     li{
@@ -196,5 +238,46 @@
         }
       }
     }
+  }
+  .form-resume{
+    display: flex;
+    justify-content: center;
+    margin: 0 0 40px 0;
+    form{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding:30px 25px;
+      position: relative;
+      box-shadow: 0px 5px 19px -7px #000;
+
+      textarea{
+        resize: none;
+        margin: 0 0 20px 0;
+        border-radius: 7px;
+        background: #f3f3f3;
+        padding: 6px 10px;
+        outline: none;
+        color: #446677;
+        font-size: 20px;
+      }
+      mark{
+        font-size: 13px;
+        background: transparent;
+        color: #35495e;
+        cursor: pointer;
+      }
+      input{
+        cursor: pointer;
+      }
+      .button-send{
+        cursor: pointer;
+
+      }
+    }
+
+  }
+  input[type="file"]{
+    display: none;
   }
 </style>
