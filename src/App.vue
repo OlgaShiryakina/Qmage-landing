@@ -5,6 +5,8 @@
       <section-top></section-top>
       <section-info></section-info>
       <section-team></section-team>
+      <section-review></section-review>
+      <block-footer></block-footer>
     </div>
   </div>
 </template>
@@ -14,6 +16,8 @@
   import sectionTop from '@/components/section/sectionTop.vue'
   import sectionInfo from '@/components/section/sectionInfo.vue'
   import sectionTeam from '@/components/section/sectionTeam.vue'
+  import sectionReview from '@/components/section/sectionReview.vue'
+  import blockFooter from '@/components/layout/footer.vue'
 
   export default {
     name: 'app',
@@ -21,7 +25,9 @@
       blockHeader,
       sectionInfo,
       sectionTop,
-      sectionTeam
+      sectionTeam,
+      sectionReview,
+      blockFooter
     }
   }
 </script>
