@@ -1,6 +1,6 @@
 <template>
   <header class="header">
-    <img src="../../assets/logo.png" alt="">
+    <div class="logo is-flex">{{ mainData.title }}</div>
     <nav>
       <ul>
         <li v-for="item in nav.items">
@@ -33,7 +33,8 @@
     },
     computed: {
       ...mapGetters({
-        nav: 'getNav'
+        nav: 'getNav',
+        mainData: 'getMainData'
       })
     }
   }

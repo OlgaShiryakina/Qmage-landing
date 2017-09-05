@@ -35,23 +35,11 @@
   @import '~bulma';
 body {
   margin: 0;
-  background: #f1f1f1;
-}
-
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-}
-
-main {
-  text-align: center;
-  margin-top: 40px;
+  font: 14px/1.5 Arial, sans-serif;
+  overflow-x: hidden;
+  word-wrap: break-word;
 }
 .main{
-  padding:80px 20px 0;
-
 }
 header {
   margin: 0;

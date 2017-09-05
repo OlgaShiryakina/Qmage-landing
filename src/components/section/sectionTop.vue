@@ -1,7 +1,7 @@
 <template>
   <section class="sectionTop dark-grad">
     <div class="container">
-      <h1 class="title">Lorem ipsum set</h1>
+      <h1 class="title">mainData.title</h1>
       <div class="level">
         <div class="level-left">
           <div class="level-item">Lorem ipsum dolor sit.</div>
@@ -36,10 +36,23 @@
   </section>
 </template>
 <script>
-  export default {
+  import { mapGetters } from 'vuex'
+
+  export default{
+    data () {
+      return {
+      }
+    },
+    computed: {
+      ...mapGetters({
+        mainData: 'getMainData'
+      })
+    }
   }
 </script>
+
 <style lang="scss">
+  @import '../../scss/variables';
   .level-left{
     width:50%;
   }
@@ -49,5 +62,21 @@
   .dark-grad{
     background: linear-gradient(to bottom, #a0a0a0 0%, #d0d0d0 100%);
     color: #fff;
+  }
+  .sectionTop{
+    background: url("../../assets/bg.jpg") center bottom no-repeat;
+    background-size: 100% auto;
+    position: relative;
+    &:before{
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, #2d2d2d 0%, #000000 100%);
+      opacity: .9;
+    }
   }
 </style>
