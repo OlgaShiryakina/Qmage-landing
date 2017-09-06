@@ -7,9 +7,9 @@
         <form>
           <textarea v-model="team.form.message" placeholder="Супровідний текст"></textarea>
           <label class="file_upload">
-            <span class="button-send">Выбрать</span>
+            <i class="fa fa-paperclip" aria-hidden="true"></i>
             <mark v-if="team.form.fileName">{{ team.form.fileName }}</mark>
-            <mark v-else>Файл не выбран</mark>
+            <mark v-else>Выберите файл</mark>
             <input  @change="onFileChange" type="file">
           </label>
           <input class="button-send" type="submit">
@@ -167,6 +167,29 @@
       }
     }
   }
+  .sectionTeam{
+    .file_upload{
+      border: 2px dashed #e1e1e1;
+      color: rgba(33,33,33,0.702);
+      padding: 0 10px;
+      margin: 0 0 20px 0;
+      height: 55px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      word-break: break-all;
+      i{
+        margin: 0 10px 0 0;
+      }
+    }
+    @include responsive(maxTablet){
+      .title.is-1{
+        font-size: 30px;
+      }
+    }
+  }
   .form-resume{
     display: flex;
     justify-content: center;
@@ -178,9 +201,8 @@
       padding:30px 25px;
       position: relative;
       box-shadow: 0px 5px 19px -7px #000;
-
+      max-width: 330px;
       textarea{
-        resize: none;
         margin: 0 0 20px 0;
         border-radius: 7px;
         background: $color7;
@@ -188,6 +210,8 @@
         outline: none;
         color: $color8;
         font-size: 20px;
+        max-width: 100%;
+        max-height: 200px;
       }
       mark{
         font-size: 13px;

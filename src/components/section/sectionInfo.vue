@@ -102,6 +102,11 @@
       padding: 5px 0 5px 15px;
       font-size: 15px;
     }
+    @include responsive(maxTablet){
+      .title{
+        font-size: 20px;
+      }
+    }
   }
 
   .level{
