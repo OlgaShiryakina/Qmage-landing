@@ -5,6 +5,14 @@
         <h1>{{ mainData.title }}</h1>
         <div class="sectionTop__slogan" v-html="mainData.slogan"></div>
       </div>
+      <div class="subscribe box">
+        <h3 class="subscribe__title">{{ mainData.sendMail.title }}</h3>
+        <!--<span>{{ mainData.sendMail.placeholder }}</span>-->
+        <div class="field">
+          <input class="input" type="email" placeholder="Email" v-model="mainData.sendMail.input">
+        </div>
+        <a class="button button-send button-blue-dark" href="javascript:void(0);">{{ mainData.sendMail.button }}</a>
+      </div>
     </div>
   </section>
 </template>
@@ -41,7 +49,7 @@
   }
   .dark-grad{
     color: #fff;
-    padding:2rem 20px;
+    padding: 2rem 0;
     position: relative;
     &:before{
       content: '';
@@ -90,18 +98,52 @@
       opacity: .9;
     }
     .container{
-      padding: 10% 0;
+      padding-top: 10%;
+      @include responsive(minTablet){padding-bottom: 10%;}
     }
     &__slogan{
-      @include responsive(minTablet){
+      @include responsive(minMedium){
+        font-size: 20px;
+        line-height: 0.8;
+        letter-spacing: 4px;
+        margin: -9px 0 0 3px;
         text-align: justify;
         -moz-text-align-last: justify;
         text-align-last: justify;
-        font-size: 20px;
-        letter-spacing: 4px;
-        line-height: 0.8;
-        margin: -9px 0 0 3px;
       }
+      @include responsive(tablet){
+        font-size: 18px;
+        line-height: 0.9;
+        letter-spacing: 2px;
+        margin: -5px 0 0 3px;
+      }
+    }
+  }
+  .subscribe{
+    &.box{
+      @include responsive(minTablet){
+        width: 350px;
+      }
+      @include responsive(maxTablet){
+        width: 100%;
+        padding: 10px;
+        margin: 50px 0 0 0 !important;
+      }
+    }
+    &__title{
+      text-align: center;
+      @include responsive(minTablet){margin: 0 0 30px;}
+      @include responsive(maxTablet){margin: 0 0 20px;}
+    }
+    .input{
+      border-radius: 20px;
+      padding-right: 15px;
+      padding-left: 15px;
+    }
+    .button{
+      display: block;
+      padding-left: 5px;
+      padding-right: 5px;
     }
   }
 </style>

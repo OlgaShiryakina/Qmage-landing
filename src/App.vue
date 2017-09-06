@@ -50,11 +50,16 @@
     line-height: 1;
   }
   h1{
-    @include responsive(minTablet){font-size: 84px;}
+    @include responsive(minMedium){font-size: 84px;}
+    @include responsive(tablet){font-size: 67px;}
     @include responsive(maxTablet){font-size: 40px;}
   }
+  h3{
+    @include responsive(minTablet){font-size: 30px;}
+    @include responsive(maxTablet){font-size: 23px;}
+  }
   .container{
-    @include responsive(maxTablet){
+    @include responsive(maxMedium){
       padding: 0 10px;
     }
   }

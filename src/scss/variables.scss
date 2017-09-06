@@ -37,7 +37,7 @@ $phone: 480;
     @media only screen and (min-width: $medium + 'px') and (max-width: $desktop - 1 + 'px') { @content; }
   }
   @else if $media == minMedium {
-    @media only screen and (min-width: $desktop + 'px') { @content; }
+    @media only screen and (min-width: $medium + 'px') { @content; }
   }
   @else if $media == maxDesktop {
     @media only screen and (max-width: $desktop - 1 + 'px') { @content; }
@@ -46,7 +46,7 @@ $phone: 480;
     @media only screen and (min-width: $desktop + 'px') and (max-width: $large - 1 + 'px') { @content; }
   }
   @else if $media == minDesktop {
-    @media only screen and (min-width: $large + 'px') { @content; }
+    @media only screen and (min-width: $desktop + 'px') { @content; }
   }
 
 }

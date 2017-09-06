@@ -7,7 +7,13 @@ const store = new Vuex.Store({
   state: {
     mainData: {
       title: 'Console24',
-      slogan: 'Полный и легкий контроль за <br> вашей электронной комерцией!',
+      slogan: 'Повний і легкий контроль за <br> вашої електронною комерцією!',
+      sendMail: {
+        title: 'Дізнайся про дату запуску першим',
+        placeholder: 'Ми повідомимо тобі поштою',
+        input: '',
+        button: 'отримати повідомлення поштою'
+      },
       phones: [
         {
           name: 'MTC',
