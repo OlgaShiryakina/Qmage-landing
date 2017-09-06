@@ -1,15 +1,16 @@
 <template>
   <section id="sectionTeam" class="sectionTeam light_theme">
     <div class="container">
-      <h2 class="title is-1 title__dark">Стать частью нашей команды</h2>
+      <h2 class="title is-1 title__dark">{{ team.title }}</h2>
 
       <div class="form-resume">
         <form>
-          <textarea name="" id="" cols="30" rows="10" placeholder="Напишите что-нибудь про себя"></textarea>
+          <textarea v-model="team.form.message" placeholder="Супровідний текст"></textarea>
           <label class="file_upload">
             <span class="button-send">Выбрать</span>
-            <mark>Файл не выбран</mark>
-            <input type="file">
+            <mark v-if="team.form.fileName">{{ team.form.fileName }}</mark>
+            <mark v-else>Файл не выбран</mark>
+            <input  @change="onFileChange" type="file">
           </label>
           <input class="button-send" type="submit">
         </form>
@@ -100,7 +101,10 @@
 
 </template>
 <script>
+  import { mapGetters } from 'vuex'
+
   require('swiper/dist/css/swiper.css')
+
   import {
     swiper,
     swiperSlide
@@ -133,6 +137,29 @@
             }
           }
         }
+      }
+    },
+    computed: {
+      ...mapGetters({
+        team: 'getTeam'
+      })
+    },
+    methods: {
+      onFileChange (e) {
+        let files = e.target.files || e.dataTransfer.files
+        if (!files.length) {
+          return
+        }
+        this.team.form.fileName = files[0].name
+        this.createImage(files[0])
+      },
+      createImage (file) {
+        let reader = new FileReader()
+        let vm = this
+        reader.onload = (e) => {
+          vm.team.form.file = e.target.result
+        }
+        reader.readAsDataURL(file)
       }
     }
   }
