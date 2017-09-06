@@ -113,4 +113,7 @@
       margin: 10px auto;
     }
   }
+  .hero.is-primary{
+    color: $color2;
+  }
 </style>

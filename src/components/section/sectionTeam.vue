@@ -2,7 +2,7 @@
   <section id="sectionTeam" class="sectionTeam light_theme">
     <div class="container">
       <h2 class="title is-1 title__dark">{{ team.title }}</h2>
-
+      <div class="container-flex">
       <div class="form-resume">
         <form>
           <textarea v-model="team.form.message" placeholder="Супровідний текст"></textarea>
@@ -30,7 +30,7 @@
             </ul>
           </swiper-slide>
     </swiper>
-
+      </div>
     </div>
   </section>
 </template>
@@ -51,23 +51,25 @@
     },
     data () {
       return {
+        abc: '',
         swiperOption: {
           slidesPerView: 3,
           paginationClickable: true,
           spaceBetween: 30,
-          autoplay: 3500,
+          autoplay: 2500,
+          loop: true,
           breakpoints: {
-            1024: {
-              slidesPerView: 3,
+            1440: {
+              slidesPerView: 2,
               spaceBetween: 40
             },
-            780: {
-              slidesPerView: 2,
+            940: {
+              slidesPerView: 1,
               spaceBetween: 20
             },
-            520: {
-              slidesPerView: 1,
-              spaceBetween: 10
+            760: {
+              slidesPerView: 2,
+              spaceBetween: 20
             }
           }
         }
@@ -120,6 +122,14 @@
   .members{
     display: flex;
     justify-content: space-around;
+  }
+  .container-flex{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-start;
+    @include responsive(maxTablet){
+      display: block;
+    }
   }
   .member{
     .devel{

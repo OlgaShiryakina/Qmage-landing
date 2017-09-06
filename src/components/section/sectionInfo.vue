@@ -62,7 +62,7 @@
     }
   }
   .level-right{
-    width:50%;
+    width:100%;
     flex-direction: column;
     align-items: flex-start;
     @include responsive(maxTablet){
@@ -72,6 +72,7 @@
   .level-left{
     flex-direction: column;
     align-items: flex-start;
+    width:100%;
     @include responsive(maxTablet){
       width: 100%;
     }
