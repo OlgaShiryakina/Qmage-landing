@@ -7,11 +7,11 @@
         <form>
           <textarea name="" id="" cols="30" rows="10" placeholder="Напишите что-нибудь про себя"></textarea>
           <label class="file_upload">
-            <span class="button-send button-blue">Выбрать</span>
+            <span class="button-send">Выбрать</span>
             <mark>Файл не выбран</mark>
             <input type="file">
           </label>
-          <input class="button-send button-purple" type="submit">
+          <input class="button-send" type="submit">
         </form>
       </div>
         <swiper :options="swiperOption" class="container members">
@@ -138,45 +138,10 @@
   }
 </script>
 <style lang="scss">
-  .title__light{
-    color: #f1f1f1;
-    text-align: center;
-    text-shadow: 1px 1px 3px #000;
-  }
   .sectionTeam{
     text-align: center;
     position: relative;
     overflow: hidden;
-  }
-  .button-send{
-    text-align: center;
-    display: inline-block;
-
-    border-radius: 20px;
-    padding: 7px 45px;
-    color: #fff;
-    transition: all .4s;
-    box-shadow: 0px 2px 2px 0px #000;
-    margin: 0 0 20px 0;
-    border:1px solid #5c637f;
-    font-size: 16px;
-    &:hover{
-      border-radius: 10px;
-    }
-    &.button-blue{
-      background: #667EEA;
-    }
-    &.button-purple{
-      background: #667eea;
-    }
-    &.button-blue-dark{
-      background: #6a5acd;
-    }
-  }
-  .title__dark{
-    text-shadow: 1px 1px 3px #f1f1f1;
-    color: #35495e;
-    text-align: center;
   }
   .member{
     display: flex;
@@ -272,7 +237,7 @@
       }
       .button-send{
         cursor: pointer;
-
+        background: #667EEA;
       }
     }
 

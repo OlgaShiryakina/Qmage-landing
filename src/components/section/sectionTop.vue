@@ -11,7 +11,7 @@
         <div class="field">
           <input class="input" type="email" placeholder="Email" v-model="mainData.sendMail.input">
         </div>
-        <a class="button button-send button-blue-dark" href="javascript:void(0);">{{ mainData.sendMail.button }}</a>
+        <a class="button button-send" href="javascript:void(0);">{{ mainData.sendMail.button }}</a>
       </div>
     </div>
   </section>
@@ -36,32 +36,6 @@
   @import '../../scss/variables';
   .level-left{
     width:50%;
-  }
-  .title__light, .title__dark{
-    &:after{
-      display: block;
-      content: '';
-      height: 8px;
-      width:100px;
-      background: #667eea;
-      margin: 10px auto;
-    }
-  }
-  .dark-grad{
-    color: #fff;
-    padding: 2rem 0;
-    position: relative;
-    &:before{
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      opacity: .8;
-      background: linear-gradient(to bottom, #202226 0%, #131313 100%);
-
-    }
   }
   .subtitle{
     color: #f1f1f1;
@@ -96,6 +70,12 @@
       height: 100%;
       background: linear-gradient(to bottom, #2d2d2d 0%, #000000 100%);
       opacity: .9;
+    }
+    .button-send{
+      background: #6a5acd;
+      border-color: #5c42ff;
+      color: #f1f1f1;
+
     }
     .container{
       padding-top: 10%;

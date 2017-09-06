@@ -3,7 +3,7 @@
     <div class="container">
       <div class="level">
         <p class="fast-start">Хотите быстрый старт?</p>
-        <a href="javascript:void(0);" class="button button-send button-blue-dark">Заказать</a>
+        <a href="javascript:void(0);" class="button button-send">Заказать</a>
       </div>
     </div>
   </section>
@@ -33,6 +33,11 @@
         font-size: 17px;
         color: #f2f2f2;
         text-transform: uppercase;
+        background: #6a5acd;
+        &:hover{
+          border-color: #5c42ff;
+
+        }
       }
     }
   }
