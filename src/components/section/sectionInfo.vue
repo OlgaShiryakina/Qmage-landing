@@ -2,89 +2,33 @@
   <section id="sectionInfo" class="sectionInfo light_theme">
     <div class="container">
   <tabs animation="slide" :only-fade="false">
-    <tab-pane label="Lorem ipsum dolor sit amet">
+    <tab-pane v-for="item in mainInfo.items" :label="item.link">
       <section class="hero is-primary hero-body box-item">
-          <div class="level">
-            <div class="level-left">
-            <h2 class="title">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit.
-            </h2>
-            <h3 class="subtitle">
-              Lorem ipsum dolor sit amet.
-            </h3>
-              <ul class="list-items">
-                <li>Lorem ipsum.</li>
-                <li>Lorem ipsum dolor sit amet.</li>
-                <li>Lorem ipsum dolor.</li>
-                <li>Lorem ipsum dolor sit amet, consectetur.</li>
-              </ul>
-            </div>
-            <div class="level-right">
-              <h2 class="title">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, quam.
-              </h2>
-              <h3 class="subtitle">
-                Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias cumque dicta dolor dolore doloribus eos, et exercitationem non optio veritatis.
-              </h3>
-            </div>
+        <div class="level">
+          <div class="level-left">
+            <h2 class="title">{{ item.title }}</h2>
+            <div v-html="item.text"></div>
           </div>
+        </div>
         </section>
-    </tab-pane>
-    <tab-pane label="Lorem ipsum dolor">
-      <section class="hero is-primary hero-body box-item">
-        <div class="level">
-          <div class="level-left">
-            <h2 class="title">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            </h2>
-            <h3 class="subtitle">
-              Lorem ipsum dolor sit amet.
-            </h3>
-          </div>
-          <div class="level-right">
-            <h2 class="title">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            </h2>
-            <h3 class="subtitle">
-              Lorem ipsum dolor sit amet.
-            </h3>
-          </div>
-        </div>
-      </section>
-    </tab-pane>
-    <tab-pane label="Lorem">
-      <section class="hero is-primary hero-body box-item">
-        <div class="level">
-          <div class="level-left">
-            <h2 class="title">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            </h2>
-            <h3 class="subtitle">
-              Lorem ipsum dolor sit amet.
-            </h3>
-          </div>
-          <div class="level-right">
-            <h2 class="title">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            </h2>
-            <h3 class="subtitle">
-              Lorem ipsum dolor sit amet.
-            </h3>
-          </div>
-        </div>
-      </section>
     </tab-pane>
   </tabs>
     </div>
   </section>
 </template>
 <script>
+  import { mapGetters } from 'vuex'
   import { Tabs, TabPane } from 'vue-bulma-tabs'
 
   export default {
     components: {
       Tabs,
       TabPane
+    },
+    computed: {
+      ...mapGetters({
+        mainInfo: 'getMainInfo'
+      })
     }
   }
 </script>
