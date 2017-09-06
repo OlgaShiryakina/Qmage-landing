@@ -38,22 +38,22 @@
     width:50%;
   }
   .subtitle{
-    color: #f1f1f1;
+    color: $color4;
   }
   .hero.is-primary{
-    background: #fff;
+    background: $color0;
 
     .title{
-      color: #333333;
+      color: $color9;
     }
     .subtitle{
-      color: #9e9e9e;
+      color: $color10;
     }
   }
   .box-item{
     border-radius: 10px;
     box-shadow: 0 7px 99px 0 rgba(58, 60, 65, 0.1);
-    border: 1px solid #ededed;
+    border: 1px solid $color11;
   }
   .sectionTop{
     background: url("../../assets/bg.jpg") center bottom no-repeat;
@@ -71,11 +71,17 @@
       background: linear-gradient(to bottom, #2d2d2d 0%, #000000 100%);
       opacity: .9;
     }
+    .input{
+      &:focus{
+        border-color: #5c42ff;
+      }
+    }
     .button-send{
-      background: #6a5acd;
-      border-color: #5c42ff;
-      color: #f1f1f1;
-
+      background: $color3;
+      border-color: $color12;
+      color: $color4;
+      display: flex;
+      align-items: center;
     }
     .container{
       padding-top: 10%;

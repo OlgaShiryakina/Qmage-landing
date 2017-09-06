@@ -138,6 +138,7 @@
   }
 </script>
 <style lang="scss">
+  @import '../../scss/variables';
   .sectionTeam{
     text-align: center;
     position: relative;
@@ -152,7 +153,7 @@
       height:140px;
     }
     strong{
-      color: #f1f1f1;
+      color: $color4;
     }
   }
   .members{
@@ -162,7 +163,7 @@
   .member{
     .devel{
       font-size:12px;
-      color: #35495e;
+      color: $color5;
       width:100%;
       &:after{
         display: block;
@@ -170,7 +171,7 @@
         height: 1px;
         width:70%;
         margin: 10px auto;
-        background: #35495e;
+        background: $color5;
       }
     }
     .name{
@@ -195,10 +196,10 @@
         padding:0;
         i{
           font-size: 25px;
-          color: #35495e;
+          color: $color5;
           transition: all .4s;
           &:hover{
-            color: #667eea;
+            color: $color1;
           }
         }
       }
@@ -220,16 +221,16 @@
         resize: none;
         margin: 0 0 20px 0;
         border-radius: 7px;
-        background: #f3f3f3;
+        background: $color7;
         padding: 6px 10px;
         outline: none;
-        color: #446677;
+        color: $color8;
         font-size: 20px;
       }
       mark{
         font-size: 13px;
         background: transparent;
-        color: #35495e;
+        color: $color5;
         cursor: pointer;
       }
       input{
@@ -237,7 +238,7 @@
       }
       .button-send{
         cursor: pointer;
-        background: #667EEA;
+        background: $color1;
       }
     }
 

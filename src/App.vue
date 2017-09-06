@@ -6,7 +6,6 @@
       <section-info></section-info>
       <section-form></section-form>
       <section-team></section-team>
-      <section-review></section-review>
     </div>
     <block-footer></block-footer>
   </div>
@@ -18,7 +17,6 @@
   import sectionInfo from '@/components/section/sectionInfo.vue'
   import sectionForm from '@/components/section/sectionForm.vue'
   import sectionTeam from '@/components/section/sectionTeam.vue'
-  import sectionReview from '@/components/section/sectionReview.vue'
   import blockFooter from '@/components/layout/footer.vue'
 
   export default {
@@ -29,7 +27,6 @@
       sectionForm,
       sectionTop,
       sectionTeam,
-      sectionReview,
       blockFooter
     }
   }
@@ -64,7 +61,7 @@
     }
   }
   .dark-grad{
-    color: #fff;
+    color: $color0;
     padding: 2rem 0;
     position: relative;
     &:before{
@@ -89,30 +86,21 @@
     transition: all .4s;
     box-shadow: 0px 2px 2px 0px #000;
     margin: 0 0 20px 0;
-    border:1px solid #5c637f;
+    border:1px solid $color6;
     font-size: 16px;
     &:hover{
       border-radius: 10px;
         box-shadow: 0 7px 23px 0 rgba(58, 60, 65, 0.2);
     }
-    /*&.button-blue{*/
-      /*background: #667EEA;*/
-    /*}*/
-    /*&.button-purple{*/
-      /*background: #667eea;*/
-    /*}*/
-    /*&.button-blue-dark{*/
-      /*background: #6a5acd;*/
-    /*}*/
   }
   .title__light{
-    color: #f1f1f1;
+    color: $color4;
     text-align: center;
     text-shadow: 1px 1px 3px #000;
   }
   .title__dark{
     text-shadow: 1px 1px 3px #f1f1f1;
-    color: #35495e;
+    color: $color5;
     text-align: center;
   }
   .title__light, .title__dark{
@@ -121,7 +109,7 @@
       content: '';
       height: 8px;
       width:100px;
-      background: #667eea;
+      background: $color1;
       margin: 10px auto;
     }
   }

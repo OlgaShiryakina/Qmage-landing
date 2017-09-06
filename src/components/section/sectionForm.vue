@@ -24,6 +24,7 @@
   }
 </script>
 <style lang="scss">
+  @import '../../scss/variables';
   .sectionForm{
     .level{
       align-items: center;
@@ -31,18 +32,18 @@
         margin: 0;
         font-weight: bold;
         font-size: 17px;
-        color: #f2f2f2;
+        color: $color15;
         text-transform: uppercase;
-        background: #6a5acd;
+        background: $color3;
         &:hover{
-          border-color: #5c42ff;
+          border-color: $color12;
 
         }
       }
     }
   }
   .fast-start{
-    color: #f1f1f1;
+    color: $color4;
     text-transform: uppercase;
     font-size: 24px;
     font-weight: bold;
