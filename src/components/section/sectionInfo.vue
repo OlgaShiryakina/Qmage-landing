@@ -1,8 +1,7 @@
 <template>
   <section id="sectionInfo" class="sectionInfo light_theme">
     <div class="container">
-  <swiper :options="swiperOption" animation="slide" :only-fade="false">
-    <div class="swiper-pagination" slot="tabs"></div>
+  <swiper :options="swiperOptionTop" class="gallery-top" :only-fade="false" ref="swiperTop">
     <swiper-slide v-for="item in mainInfo.items" :label="item.link">
       <section class="hero is-primary hero-body box-item">
         <div class="level">
@@ -14,8 +13,14 @@
         </section>
     </swiper-slide>
   </swiper>
+      <swiper class="gallery-thumbs" :options="swiperOptionThumbs" ref="swiperThumbs">
+        <swiper-slide v-for="item in mainInfo.items">
+          <span>{{item.link}}</span>
+        </swiper-slide>
+      </swiper>
     </div>
   </section>
+
 </template>
 
 <script>
@@ -34,22 +39,34 @@
       swiper,
       swiperSlide
     },
-    data () {
+    data: function () {
       return {
-        swiperOption: {
-          pagination: '.swiper-pagination',
-          paginationClickable: true,
+        swiperOptionTop: {
+          notNextTick: true,
+          nextButton: '.swiper-button-next',
+          prevButton: '.swiper-button-prev',
+          spaceBetween: 10,
           direction: 'vertical'
+        },
+        swiperOptionThumbs: {
+          spaceBetween: 10,
+          touchRatio: 0.2,
+          slideToClickedSlide: true,
+          direction: 'horizontal'
         }
       }
     },
-
+    mounted () {
+      const swiperTop = this.$refs.swiperTop.swiper
+      const swiperThumbs = this.$refs.swiperThumbs.swiper
+      swiperTop.params.control = swiperThumbs
+      swiperThumbs.params.control = swiperTop
+    },
     computed: {
       ...mapGetters({
         mainInfo: 'getMainInfo'
       })
     }
-
   }
 </script>
 <style lang="scss">
@@ -75,7 +92,15 @@
       height:500px;
     }
   }
+.gallery-thumbs{
+  .swiper-wrapper{
+    transform: none !important;
 
+  }
+  .swiper-slide{
+    width:200px !important;
+  }
+}
   .level{
     .subtitle{
       color: #6e717f !important;
