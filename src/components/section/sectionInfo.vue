@@ -1,8 +1,9 @@
 <template>
   <section id="sectionInfo" class="sectionInfo light_theme">
     <div class="container">
-  <tabs animation="slide" :only-fade="false">
-    <tab-pane v-for="item in mainInfo.items" :label="item.link">
+  <swiper :options="swiperOption" animation="slide" :only-fade="false">
+    <div class="swiper-pagination" slot="tabs"></div>
+    <swiper-slide v-for="item in mainInfo.items" :label="item.link">
       <section class="hero is-primary hero-body box-item">
         <div class="level">
           <div class="level-left">
@@ -11,25 +12,44 @@
           </div>
         </div>
         </section>
-    </tab-pane>
-  </tabs>
+    </swiper-slide>
+  </swiper>
     </div>
   </section>
 </template>
+
 <script>
   import { mapGetters } from 'vuex'
   import { Tabs, TabPane } from 'vue-bulma-tabs'
+  require('swiper/dist/css/swiper.css')
 
+  import {
+    swiper,
+    swiperSlide
+  } from 'vue-awesome-swiper'
   export default {
     components: {
       Tabs,
-      TabPane
+      TabPane,
+      swiper,
+      swiperSlide
     },
+    data () {
+      return {
+        swiperOption: {
+          pagination: '.swiper-pagination',
+          paginationClickable: true,
+          direction: 'vertical'
+        }
+      }
+    },
+
     computed: {
       ...mapGetters({
         mainInfo: 'getMainInfo'
       })
     }
+
   }
 </script>
 <style lang="scss">
@@ -50,6 +70,9 @@
       .title{
         font-size: 20px;
       }
+    }
+    .swiper-container{
+      height:500px;
     }
   }
 
