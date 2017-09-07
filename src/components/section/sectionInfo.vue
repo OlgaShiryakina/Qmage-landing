@@ -126,6 +126,7 @@
     border-radius: 10px;
     .swiper-slide{
       opacity: 0 !important;
+      transition: all .354443335s cubic-bezier(0.4, 0, 1, 1) !important;
       .is-primary{
 box-shadow: none;
         border:none;

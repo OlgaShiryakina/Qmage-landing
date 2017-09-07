@@ -5,14 +5,14 @@
         <h1>{{ mainData.title }}</h1>
         <div class="sectionTop__slogan" v-html="mainData.slogan"></div>
       </div>
-      <div class="subscribe box">
+      <form id="subscribe" class="subscribe box">
         <h3 class="subscribe__title">{{ mainData.sendMail.title }}</h3>
-        <!--<span>{{ mainData.sendMail.placeholder }}</span>-->
+        <span>{{ mainData.sendMail.placeholder }}</span>
         <div class="field">
-          <input class="input" type="email" placeholder="Email" v-model="mainData.sendMail.input">
+          <input required title="например main@mail.com" pattern="^[^@]+@[^@.]+\.[^@]+$" class="input" type="email" placeholder="Email" v-model="mainData.sendMail.input">
         </div>
-        <a class="button button-send" href="javascript:void(0);">{{ mainData.sendMail.button }}</a>
-      </div>
+        <button form="subscribe" class="button button-send" @click="sendMailTo(mainData.sendMail.input)">{{ mainData.sendMail.button }}</button>
+      </form>
     </div>
   </section>
 </template>
@@ -28,6 +28,15 @@
       ...mapGetters({
         mainData: 'getMainData'
       })
+    },
+    methods: {
+      sendMailTo (value) {
+        const reg = '^[^@]+@[^@.]+\\.[^@]+$'
+        let result = value.match(reg)
+        if (result) {
+          this.$store.dispatch('addContact', result[0])
+        }
+      }
     }
   }
 </script>
@@ -128,8 +137,8 @@
     }
     .button{
       display: block;
-      padding-left: 5px;
-      padding-right: 5px;
+      padding: 5px;
+      width:100%;
     }
   }
 </style>

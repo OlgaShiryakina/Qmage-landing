@@ -108,6 +108,20 @@ const store = new Vuex.Store({
     getMainInfo (state) {
       return state.mainInfo
     }
+  },
+  actions: {
+    addContact: function ({commit}, value) {
+      if (value) {
+        commit('addContact', value)
+      } else {
+        // TODO: ERROR
+      }
+    }
+  },
+  mutations: {
+    addContact: function (state, value) {
+      state.mainData.sendMail.input = value
+    }
   }
 })
 export default store
