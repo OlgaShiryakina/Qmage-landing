@@ -1,7 +1,7 @@
 <template>
   <footer class="footer dark-grad">
     <div class="container level">
-      <div class="footer__logo"><img src="../../assets/logo.png" :alt="mainData.title"></div>
+      <div class="footer__logo"><img src="../../assets/qpard-white.png" :alt="mainData.title"></div>
       <ul class="footer__phones">
         <li v-for="item in mainData.phones">
           <span class="icon is-small">
@@ -40,7 +40,7 @@
   @import '../../scss/variables';
   .footer{
     &__logo{
-      width: 80px;
+      width: 155px;
     }
     &__phones{
 

@@ -34,7 +34,10 @@
         const reg = '^[^@]+@[^@.]+\\.[^@]+$'
         let result = value.match(reg)
         if (result) {
+          console.log('sendMailTo send')
           this.$store.dispatch('addContact', result[0])
+        } else {
+          console.log('sendMailTo error')
         }
       }
     }

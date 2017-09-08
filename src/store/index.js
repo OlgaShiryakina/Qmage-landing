@@ -12,7 +12,8 @@ const store = new Vuex.Store({
         title: 'Дізнайся про дату запуску першим',
         placeholder: 'Ми повідомимо тобі поштою',
         input: '',
-        button: 'отримати повідомлення поштою'
+        button: 'отримати повідомлення поштою',
+        success: '<h4>Дякуємо за підписку</h4>'
       },
       phones: [
         {
@@ -112,8 +113,10 @@ const store = new Vuex.Store({
   actions: {
     addContact: function ({commit}, value) {
       if (value) {
+        console.log('addContact commit')
         commit('addContact', value)
       } else {
+        console.log('addContact error')
         // TODO: ERROR
       }
     }

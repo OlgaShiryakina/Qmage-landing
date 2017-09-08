@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     <div class="container level">
-      <div class="logo is-flex">{{ mainData.title }}</div>
+      <div class="logo is-flex"><img src="../../assets/qpard-white.png" :alt="mainData.title"></div>
       <ul class="header__nav is-flex">
         <li v-for="item in nav.items">
           <a v-scroll-to="'#' + item.link" href="javascript:void(0);">{{ item.name }}</a>
@@ -44,6 +44,8 @@
     }
     .logo {
       font-size: 20px;
+      align-items: center;
+      width: 155px;
     }
     &__nav {
       li {

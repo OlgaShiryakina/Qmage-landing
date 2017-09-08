@@ -55,6 +55,10 @@
     @include responsive(minTablet){font-size: 30px;}
     @include responsive(maxTablet){font-size: 23px;}
   }
+  img{
+    max-width: 100%;
+    height: auto;
+  }
   .container{
     @include responsive(maxMedium){
       padding: 0 10px;
