@@ -2,35 +2,21 @@
   <section id="sectionTeam" class="sectionTeam light_theme">
     <div class="container">
       <h2 class="title is-1 title__dark">{{ team.title }}</h2>
-      <div class="container-flex">
-      <div class="form-resume">
-        <form>
-          <textarea v-model="team.form.message" placeholder="Супровідний текст"></textarea>
-          <label class="file_upload">
-            <i class="fa fa-paperclip" aria-hidden="true"></i>
-            <mark v-if="team.form.fileName">{{ team.form.fileName }}</mark>
-            <mark v-else>Выберите файл</mark>
-            <input  @change="onFileChange" type="file">
-          </label>
-          <input class="button-send" type="submit">
-        </form>
-      </div>
-        <swiper :options="swiperOption" class="container members">
-          <swiper-slide class="member" v-for="item in team.items">
-            <img src="../../assets/logo.png" alt="">
-            <span class="name">{{ item.name }}</span>
-            <strong class="devel">{{ item.position }}</strong>
-            <i class="about">{{ item.info }}</i>
-            <ul>
-              <li><a href="javascript:void(0);"><i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>
-              <li><a href="javascript:void(0);"><i class="fa fa-telegram" aria-hidden="true"></i></a></li>
-              <li><a href="javascript:void(0);"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
-              <li><a href="javascript:void(0);"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
-              <li><a href="javascript:void(0);"><i class="fa fa-google-plus-square" aria-hidden="true"></i></a></li>
-            </ul>
-          </swiper-slide>
-    </swiper>
-      </div>
+      <swiper :options="swiperOption" class="container sectionTeam__slider">
+        <swiper-slide class="sectionTeam__item" v-for="item in team.items">
+          <img src="../../assets/logo.png" alt="">
+          <span class="sectionTeam__item__name">{{ item.name }}</span>
+          <strong class="sectionTeam__item__position">{{ item.position }}</strong>
+          <i class="sectionTeam__item__info">{{ item.info }}</i>
+          <ul>
+            <li><a href="javascript:void(0);"><i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>
+            <li><a href="javascript:void(0);"><i class="fa fa-telegram" aria-hidden="true"></i></a></li>
+            <li><a href="javascript:void(0);"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
+            <li><a href="javascript:void(0);"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
+            <li><a href="javascript:void(0);"><i class="fa fa-google-plus-square" aria-hidden="true"></i></a></li>
+          </ul>
+        </swiper-slide>
+      </swiper>
     </div>
   </section>
 </template>
@@ -53,22 +39,22 @@
       return {
         abc: '',
         swiperOption: {
-          slidesPerView: 3,
+          slidesPerView: 4,
           paginationClickable: true,
           spaceBetween: 30,
           autoplay: 2500,
           loop: true,
           breakpoints: {
-            1440: {
-              slidesPerView: 2,
+            1200: {
+              slidesPerView: 3,
               spaceBetween: 40
             },
-            940: {
-              slidesPerView: 1,
+            850: {
+              slidesPerView: 2,
               spaceBetween: 20
             },
-            760: {
-              slidesPerView: 2,
+            600: {
+              slidesPerView: 1,
               spaceBetween: 20
             }
           }
@@ -79,24 +65,6 @@
       ...mapGetters({
         team: 'getTeam'
       })
-    },
-    methods: {
-      onFileChange (e) {
-        let files = e.target.files || e.dataTransfer.files
-        if (!files.length) {
-          return
-        }
-        this.team.form.fileName = files[0].name
-        this.createImage(files[0])
-      },
-      createImage (file) {
-        let reader = new FileReader()
-        let vm = this
-        reader.onload = (e) => {
-          vm.team.form.file = e.target.result
-        }
-        reader.readAsDataURL(file)
-      }
     }
   }
 </script>
@@ -106,139 +74,65 @@
     text-align: center;
     position: relative;
     overflow: hidden;
-  }
-  .member{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    &>img{
-      height:140px;
-    }
-    strong{
-      color: $color4;
-    }
-  }
-  .members{
-    display: flex;
-    justify-content: space-around;
-  }
-  .container-flex{
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: flex-start;
-    @include responsive(maxTablet){
-      display: block;
-    }
-  }
-  .member{
-    .devel{
-      font-size:12px;
-      color: $color5;
-      width:100%;
-      &:after{
-        display: block;
-        content: '';
-        height: 1px;
-        width:70%;
-        margin: 10px auto;
-        background: $color5;
-      }
-    }
-    .name{
-      font-size:23px;
-      font-weight:bold;
-
-    }
-    .about{
-      font-size:16px;
-      margin: 0 0 10px 0;
-      padding: 0 20px;
-      line-height: 20px;
-    }
-    ul{
-      display: flex;
-      justify-content: center;
-      width:100%;
-    }
-    li{
-      margin:0 10px;
-      a{
-        padding:0;
-        i{
-          font-size: 25px;
-          color: $color5;
-          transition: all .4s;
-          &:hover{
-            color: $color1;
-          }
-        }
-      }
-    }
-  }
-  .sectionTeam{
-    .file_upload{
-      border: 2px dashed #e1e1e1;
-      color: rgba(33,33,33,0.702);
-      padding: 0 10px;
-      margin: 0 0 20px 0;
-      height: 55px;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      word-break: break-all;
-      i{
-        margin: 0 10px 0 0;
-      }
-    }
     @include responsive(maxTablet){
       .title.is-1{
         font-size: 30px;
       }
     }
-  }
-  .form-resume{
-    display: flex;
-    justify-content: center;
-    margin: 0 0 40px 0;
-    form{
+    &__slider{
+      display: flex;
+      justify-content: space-around;
+    }
+    &__item{
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding:30px 25px;
-      position: relative;
-      box-shadow: 0px 5px 19px -7px #000;
-      max-width: 330px;
-      textarea{
-        margin: 0 0 20px 0;
-        border-radius: 7px;
-        background: $color7;
-        padding: 6px 10px;
-        outline: none;
-        color: $color8;
-        font-size: 20px;
-        max-width: 100%;
-        max-height: 200px;
+      text-align: center;
+      &>img{
+        height:140px;
       }
-      mark{
-        font-size: 13px;
-        background: transparent;
+      &__name{
+        font-size:23px;
+        font-weight:bold;
+      }
+      &__position{
+        font-size:12px;
         color: $color5;
-        cursor: pointer;
+        width:100%;
+        &:after{
+          display: block;
+          content: '';
+          height: 1px;
+          width:70%;
+          margin: 10px auto;
+          background: $color5;
+        }
       }
-      input{
-        cursor: pointer;
+      &__info{
+        font-size: 15px;
+        margin: 0 0 10px 0;
+        padding: 0 20px;
+        line-height: 20px;
       }
-      .button-send{
-        cursor: pointer;
-        background: $color1;
+      ul{
+        display: flex;
+        justify-content: center;
+        width:100%;
+      }
+      li{
+        margin:0 10px;
+        a{
+          padding:0;
+          i{
+            font-size: 25px;
+            color: $color5;
+            transition: all .4s;
+            &:hover{
+              color: $color1;
+            }
+          }
+        }
       }
     }
-
-  }
-  input[type="file"]{
-    display: none;
   }
 </style>

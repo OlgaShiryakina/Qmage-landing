@@ -71,8 +71,9 @@ const store = new Vuex.Store({
       ]
     },
     team: {
-      title: 'Стань частиною нашої команди!',
+      title: 'Наша команда!',
       form: {
+        title: 'Стань частиною нашої команди!',
         message: '',
         file: '',
         fileName: ''

@@ -68,8 +68,8 @@
     border: 1px solid $color11;
   }
   .sectionTop{
-    background: url("../../assets/bg.jpg") center bottom no-repeat;
-    background-size: 100% auto;
+    background-image: url("../../assets/bg1.jpg");
+    @extend .imageCoverFixed;
     position: relative;
     padding-top: $headerHeight;
     &:before{

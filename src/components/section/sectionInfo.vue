@@ -87,7 +87,6 @@
 <style lang="scss">
   @import '../../scss/variables';
   .sectionInfo{
-    padding:2rem 0;
     .level{
       align-items: flex-start;
     }
@@ -252,7 +251,7 @@ box-shadow: none;
 
   .light_theme{
     background: $color13;
-    padding: 2rem 0;
+    padding: 70px 0;
   }
   .swiper-container {
     width: 100%;

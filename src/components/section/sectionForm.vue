@@ -6,18 +6,18 @@
         <a href="javascript:void(0);" @click="accordion = true" class="button button-send">Заказать</a>
       </div>
       <div class="form" v-show="accordion">
-        <form>
-          <div class="contain">
-          <input type="text" placeholder="name">
-          <input type="email" placeholder="email">
-          <textarea placeholder="Smth write..."></textarea>
-          </div>
-          <div class="contain">
-            <input type="submit" class="button button-send">
-            <input type="submit" class="button button-send" value="Отменить" @click="accordion = false">
-
-          </div>
-        </form>
+        <div class="form-resume">
+          <form>
+            <textarea v-model="team.form.message" placeholder="Супровідний текст"></textarea>
+            <label class="file_upload">
+              <i class="fa fa-paperclip" aria-hidden="true"></i>
+              <span v-if="team.form.fileName">{{ team.form.fileName }}</span>
+              <span v-else>Выберите файл</span>
+              <input  @change="onFileChange" type="file">
+            </label>
+            <input class="button-send" type="submit">
+          </form>
+        </div>
       </div>
     </div>
   </section>
@@ -33,16 +33,38 @@
     },
     computed: {
       ...mapGetters({
-        mainData: 'getMainData'
+        mainData: 'getMainData',
+        team: 'getTeam'
       })
+    },
+    methods: {
+      onFileChange (e) {
+        let files = e.target.files || e.dataTransfer.files
+        if (!files.length) {
+          return
+        }
+        this.team.form.fileName = files[0].name
+        this.createImage(files[0])
+      },
+      createImage (file) {
+        let reader = new FileReader()
+        let vm = this
+        reader.onload = (e) => {
+          vm.team.form.file = e.target.result
+        }
+        reader.readAsDataURL(file)
+      }
     }
   }
 </script>
 <style lang="scss">
   @import '../../scss/variables';
   .sectionForm{
+    background-image: url("../../assets/bg1.jpg");
+    @extend .imageCoverFixed;
     .level{
       align-items: center;
+      margin:0;
       .button-send{
         margin: 0;
         font-weight: bold;
@@ -55,9 +77,6 @@
 
         }
       }
-    }
-    .level{
-      margin:0;
     }
     .form{
       display: flex;
@@ -100,6 +119,22 @@
             flex-wrap: wrap;
           }
         }
+      }
+    }
+    .file_upload{
+      border: 2px dashed #e1e1e1;
+      color: rgba(255, 255, 255, 0.702);
+      padding: 0 10px;
+      margin: 0 0 20px 0;
+      height: 55px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      word-break: break-all;
+      i{
+        margin: 0 10px 0 0;
       }
     }
   }
