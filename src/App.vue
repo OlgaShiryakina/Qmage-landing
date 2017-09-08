@@ -140,11 +140,6 @@
       @include responsive(minTablet){margin: 0 0 30px;}
       @include responsive(maxTablet){margin: 0 0 20px;}
     }
-    .input{
-      border-radius: 20px;
-      padding-right: 15px;
-      padding-left: 15px;
-    }
     .button{
       display: block;
       padding: 5px;

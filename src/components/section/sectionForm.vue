@@ -14,13 +14,14 @@
             <li>менеджер</li>
           </ol>
           <p>Якщо ви збираєтесь використовувати Lorem Ipsum, ви маєте упевнитись в тому, що всередині тексту не приховано нічого, що могло б викликати у читача конфуз. Більшість відомих генераторів Lorem Ipsum в Мережі генерують текст шляхом повторення наперед заданих послідовностей Lorem Ipsum. Принципова відмінність цього генератора робить його першим справжнім генератором Lorem Ipsum. Він використовує словник з більш як 200 слів латини та цілий набір моделей речень - це дозволяє генерувати Lorem Ipsum, який виглядає осмислено. Таким чином, згенерований Lorem Ipsum не міститиме повторів, жартів, нехарактерних для латини слів і т.ін.Класичний текст, використовуваний з XVI сторіччя, наведено нижче для всіх зацікавлених. Також точно за оригіналом наведено розділи 1.10.32 та 1.10.33 цицеронівського "de Finibus Bonorum et Malorum" разом із перекладом англійською, виконаним 1914 року Х.Рекемом.</p>
+          <ul>
+            <li v-for="candidate in candidates">
+              <div>{{ candidate.name }}</div>
+            </li>
+          </ul>
         </div>
-        <ol v-for="candidate in candidates">
-          <li>{{ candidates.name }}</li>
-          <li></li>
-        </ol>
         <div class="column">
-          <form class="form box">
+          <form ref="candidateForm" class="form box">
             <h3 class="form__title">Відправляй резюме</h3>
             <div class="field">
               <span class="label">Iм'я</span>
@@ -90,7 +91,18 @@
         reader.readAsDataURL(file)
       },
       sendResume () {
-        this.$store.commit('newResume', this.formData)
+        this.$store.dispatch('newResume', this.formData)
+        this.resetData()
+        console.log('sendResume', this.formData)
+      },
+      resetData () {
+        this.formData = {
+          name: '',
+          email: '',
+          message: '',
+          file: '',
+          fileName: ''
+        }
       }
     }
   }

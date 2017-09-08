@@ -96,7 +96,15 @@ const store = new Vuex.Store({
         }
       ]
     },
-    candidates: []
+    candidates: [
+      {
+        name: 'zvgzdfzdfv',
+        email: '',
+        message: '',
+        file: '',
+        fileName: ''
+      }
+    ]
   },
   getters: {
     getNav (state) {
@@ -124,15 +132,21 @@ const store = new Vuex.Store({
         console.log('addContact error')
         // TODO: ERROR
       }
+    },
+    newResume: function ({commit}, data) {
+      console.log('newResume')
+      commit('setResume', data)
     }
   },
   mutations: {
     addContact: function (state, value) {
       state.mainData.sendMail.input = value
     },
-    newResume: function (state, data) {
+    setResume: function (state, data) {
       let num = state.candidates.length
+      state.candidates[num] = {}
       state.candidates[num] = data
+      console.log('setResume', num, data, state.candidates)
     }
   }
 })

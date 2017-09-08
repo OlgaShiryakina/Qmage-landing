@@ -39,6 +39,9 @@
 <style lang="scss">
   @import '../../scss/variables';
   .footer{
+    .dark-grad{
+      padding: 20px 0;
+    }
     &__logo{
       width: 155px;
     }
