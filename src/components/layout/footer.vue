@@ -39,14 +39,14 @@
 <style lang="scss">
   @import '../../scss/variables';
   .footer{
-    .dark-grad{
+    &.dark-grad{
       padding: 20px 0;
     }
     &__logo{
       width: 155px;
     }
     &__phones{
-
+      margin: 0;
     }
   }
 </style>
