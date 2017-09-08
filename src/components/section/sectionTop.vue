@@ -5,13 +5,13 @@
         <h1>{{ mainData.title }}</h1>
         <div class="sectionTop__slogan" v-html="mainData.slogan"></div>
       </div>
-      <form id="subscribe" class="subscribe box">
-        <h3 class="subscribe__title">{{ mainData.sendMail.title }}</h3>
+      <form id="subscribe" class="form box">
+        <h3 class="form__title">{{ mainData.sendMail.title }}</h3>
         <span>{{ mainData.sendMail.placeholder }}</span>
         <div class="field">
           <input required title="например main@mail.com" pattern="^[^@]+@[^@.]+\.[^@]+$" class="input" type="email" placeholder="Email" v-model="mainData.sendMail.input">
         </div>
-        <button form="subscribe" class="button button-send" @click="sendMailTo(mainData.sendMail.input)">{{ mainData.sendMail.button }}</button>
+        <button form="subscribe" class="button button-default" @click="sendMailTo(mainData.sendMail.input)">{{ mainData.sendMail.button }}</button>
       </form>
     </div>
   </section>
@@ -70,25 +70,8 @@
   .sectionTop{
     background-image: url("../../assets/bg1.jpg");
     @extend .imageCoverFixed;
-    position: relative;
     padding-top: $headerHeight;
-    &:before{
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to bottom, #2d2d2d 0%, #000000 100%);
-      opacity: .9;
-    }
-    .input{
-      &:focus{
-        border-color: #5c42ff;
-      }
-    }
-    .button-send{
+    .button-default{
       background: $color3;
       border-color: $color12;
       color: $color4;
@@ -115,33 +98,6 @@
         letter-spacing: 2px;
         margin: -5px 0 0 3px;
       }
-    }
-  }
-  .subscribe{
-    &.box{
-      @include responsive(minTablet){
-        width: 350px;
-      }
-      @include responsive(maxTablet){
-        width: 100%;
-        padding: 10px;
-        margin: 50px 0 0 0 !important;
-      }
-    }
-    &__title{
-      text-align: center;
-      @include responsive(minTablet){margin: 0 0 30px;}
-      @include responsive(maxTablet){margin: 0 0 20px;}
-    }
-    .input{
-      border-radius: 20px;
-      padding-right: 15px;
-      padding-left: 15px;
-    }
-    .button{
-      display: block;
-      padding: 5px;
-      width:100%;
     }
   }
 </style>

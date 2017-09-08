@@ -44,12 +44,17 @@
     word-wrap: break-word;
   }
   h1, h2, h3, h4, h5, h6{
-    line-height: 1;
+    line-height: 1 !important;
+    font-weight: 400 !important;
   }
   h1{
     @include responsive(minMedium){font-size: 84px;}
     @include responsive(tablet){font-size: 67px;}
     @include responsive(maxTablet){font-size: 40px;}
+  }
+  h3{
+    @include responsive(minTablet){font-size: 48px;}
+    @include responsive(maxTablet){font-size: 30px;}
   }
   h3{
     @include responsive(minTablet){font-size: 30px;}
@@ -59,6 +64,13 @@
     max-width: 100%;
     height: auto;
   }
+  ol, ul{
+    list-style-position: inside;
+    margin: 20px 0;
+    li + li{
+      margin-top: 10px;
+    }
+  }
   .container{
     @include responsive(maxMedium){
       padding: 0 10px;
@@ -66,55 +78,97 @@
   }
   .dark-grad{
     color: $color0;
-    padding: 2rem 0;
+    padding: 70px 0;
     position: relative;
     &:before{
       content: '';
       position: absolute;
       top: 0;
       left: 0;
+      z-index: 0;
       width: 100%;
       height: 100%;
-      opacity: .8;
-      background: linear-gradient(to bottom, #202226 0%, #131313 100%);
-
+      background: linear-gradient(to bottom, #2d2d2d 0%, #000000 100%);
+      opacity: .9;
+    }
+    .label{
+      font-weight: 400;
+      font-size: 14px;
+      margin: 0;
     }
   }
-  .button-send{
+  .button-default{
     text-align: center;
     display: inline-block;
-
     border-radius: 20px;
     padding: 7px 45px;
     color: #fff;
     transition: all .4s;
-    box-shadow: 0px 2px 2px 0px #000;
+    box-shadow: 0 2px 2px 0 #000;
     margin: 0 0 20px 0;
     border:1px solid $color6;
     font-size: 16px;
+    line-height: 1;
+    text-decoration: none !important;
+    cursor: pointer;
+    background: $color3;
     &:hover{
+      color: #fff;
       border-radius: 10px;
-        box-shadow: 0 7px 23px 0 rgba(58, 60, 65, 0.2);
+      border-color: $color12;
+      box-shadow: 0 7px 23px 0 rgba(58, 60, 65, 0.2);
     }
   }
-  .title__light{
-    color: $color4;
-    text-align: center;
-    text-shadow: 1px 1px 3px #000;
+  .input{
+    &:focus{
+      border-color: #5c42ff;
+    }
   }
-  .title__dark{
-    text-shadow: 1px 1px 3px #f1f1f1;
-    color: $color5;
-    text-align: center;
-  }
-  .title__light, .title__dark{
-    &:after{
+  .form{
+    &.box{
+      @include responsive(minTablet){
+        width: 350px;
+      }
+      @include responsive(maxTablet){
+        width: 100%;
+        padding: 10px;
+        margin: 50px 0 0 0 !important;
+      }
+    }
+    &__title{
+      text-align: center;
+      @include responsive(minTablet){margin: 0 0 30px;}
+      @include responsive(maxTablet){margin: 0 0 20px;}
+    }
+    .input{
+      border-radius: 20px;
+      padding-right: 15px;
+      padding-left: 15px;
+    }
+    .button{
       display: block;
-      content: '';
-      height: 8px;
-      width:100px;
-      background: $color1;
-      margin: 10px auto;
+      padding: 5px;
+      width:100%;
+    }
+  }
+  .title{
+    &__light, &__dark{
+      &:after{
+        display: block;
+        content: '';
+        height: 3px;
+        width: 200px;
+        background: $color1;
+        margin: 10px auto;
+      }
+    }
+    &__dark{
+      color: $color5;
+      text-align: center;
+    }
+    &__light{
+      color: $color4;
+      text-align: center;
     }
   }
   .hero.is-primary{

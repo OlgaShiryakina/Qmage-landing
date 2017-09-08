@@ -71,12 +71,12 @@ const store = new Vuex.Store({
       ]
     },
     team: {
-      title: 'Наша команда!',
+      title: 'Наша команда',
       form: {
         title: 'Стань частиною нашої команди!',
-        message: '',
-        file: '',
-        fileName: ''
+        infoTop: '',
+        infoBottom: '',
+        vacancies: ['Розробник', 'програміст', 'менеджер']
       },
       items: [
         {
@@ -95,7 +95,8 @@ const store = new Vuex.Store({
           info: 'Різні версії Lorem Ipsum з&#8242;явились за минулі роки, деякі випадково, деякі було створено зумисно (зокрема, жартівливі).'
         }
       ]
-    }
+    },
+    candidates: []
   },
   getters: {
     getNav (state) {
@@ -109,6 +110,9 @@ const store = new Vuex.Store({
     },
     getMainInfo (state) {
       return state.mainInfo
+    },
+    getCandidates (state) {
+      return state.candidates
     }
   },
   actions: {
@@ -125,6 +129,10 @@ const store = new Vuex.Store({
   mutations: {
     addContact: function (state, value) {
       state.mainData.sendMail.input = value
+    },
+    newResume: function (state, data) {
+      let num = state.candidates.length
+      state.candidates[num] = data
     }
   }
 })

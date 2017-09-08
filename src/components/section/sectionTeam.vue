@@ -74,11 +74,6 @@
     text-align: center;
     position: relative;
     overflow: hidden;
-    @include responsive(maxTablet){
-      .title.is-1{
-        font-size: 30px;
-      }
-    }
     &__slider{
       display: flex;
       justify-content: space-around;
