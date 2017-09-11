@@ -5,13 +5,16 @@
         <h1>{{ mainData.title }}</h1>
         <div class="sectionTop__slogan" v-html="mainData.slogan"></div>
       </div>
-      <form id="subscribe" class="form box">
-        <h3 class="form__title">{{ mainData.sendMail.title }}</h3>
-        <span>{{ mainData.sendMail.placeholder }}</span>
+      <form @submit.prevent="submit" class="form box">
+        <h3 class="form__title">{{ formSubscribe.title }}</h3>
         <div class="field">
-          <input required title="например main@mail.com" pattern="^[^@]+@[^@.]+\.[^@]+$" class="input" type="email" placeholder="Email" v-model="mainData.sendMail.input">
+          <input required title="наприклад main@mail.com" pattern="^[^@]+@[^@.]+\.[^@]+$" class="input" type="email" placeholder="Email" v-model="newSubscribe">
         </div>
-        <button form="subscribe" class="button button-default" @click="sendMailTo(mainData.sendMail.input)">{{ mainData.sendMail.button }}</button>
+        <button class="button button-default">{{ formSubscribe.button }}</button>
+        <div :class="{ show: show }" class="form__message">
+          <div v-if="successEmail" v-html="formSubscribe.success"></div>
+          <div v-else v-html="formSubscribe.error"></div>
+        </div>
       </form>
     </div>
   </section>
@@ -22,23 +25,53 @@
   export default{
     data () {
       return {
+        newSubscribe: '',
+        successEmail: false,
+        show: false
       }
+    },
+    created: function () {
+      this.resetSubscription()
     },
     computed: {
       ...mapGetters({
-        mainData: 'getMainData'
+        mainData: 'getMainData',
+        formSubscribe: 'getSubscribe',
+        subscribers: 'getSubscribers'
       })
     },
     methods: {
-      sendMailTo (value) {
-        const reg = '^[^@]+@[^@.]+\\.[^@]+$'
-        let result = value.match(reg)
-        if (result) {
-          console.log('sendMailTo send')
-          this.$store.dispatch('addContact', result[0])
+      submit () {
+//        let email = this.newSubscribe.replace(/(^\s*)|(\s*)$/g, '')
+        let equality = this.checkEquality()
+
+        if (equality) {
+          this.successEmail = true
+          this.$store.dispatch('addSubscriber', this.newSubscribe)
         } else {
-          console.log('sendMailTo error')
+          this.successEmail = false
         }
+
+        this.showMessage()
+        this.resetSubscription()
+      },
+      resetSubscription () {
+        this.newSubscribe = ''
+      },
+      checkEquality () {
+        for (let i in this.subscribers) {
+          if (this.subscribers[i] === this.newSubscribe) {
+            return false
+          }
+        }
+        return true
+      },
+      showMessage () {
+        let vm = this
+        vm.show = true
+        setTimeout(function () {
+          vm.show = false
+        }, 3000)
       }
     }
   }

@@ -8,13 +8,6 @@ const store = new Vuex.Store({
     mainData: {
       title: 'Console24',
       slogan: 'Повний і легкий контроль за <br> вашої електронною комерцією!',
-      sendMail: {
-        title: 'Дізнайся про дату запуску першим',
-        placeholder: 'Ми повідомимо тобі поштою',
-        input: '',
-        button: 'отримати повідомлення поштою',
-        success: '<h4>Дякуємо за підписку</h4>'
-      },
       phones: [
         {
           name: 'MTC',
@@ -51,6 +44,13 @@ const store = new Vuex.Store({
         }
       ]
     },
+    formSubscribe: {
+      title: 'Дізнайся про дату запуску першим',
+      button: 'отримати повідомлення поштою',
+      success: '<h4>Дякуємо за підписку</h4>',
+      error: '<h4>Такий email у нас вже є</h4>'
+    },
+    subscribers: [],
     mainInfo: {
       items: [
         {
@@ -113,6 +113,12 @@ const store = new Vuex.Store({
     getMainData (state) {
       return state.mainData
     },
+    getSubscribe (state) {
+      return state.formSubscribe
+    },
+    getSubscribers (state) {
+      return state.subscribers
+    },
     getTeam (state) {
       return state.team
     },
@@ -124,14 +130,8 @@ const store = new Vuex.Store({
     }
   },
   actions: {
-    addContact: function ({commit}, value) {
-      if (value) {
-        console.log('addContact commit')
-        commit('addContact', value)
-      } else {
-        console.log('addContact error')
-        // TODO: ERROR
-      }
+    addSubscriber: function ({commit}, value) {
+      commit('push', { type: 'subscribers', items: value })
     },
     newResume: function ({commit}, data) {
       console.log('newResume')
@@ -139,14 +139,18 @@ const store = new Vuex.Store({
     }
   },
   mutations: {
-    addContact: function (state, value) {
-      state.mainData.sendMail.input = value
-    },
     setResume: function (state, data) {
       let num = state.candidates.length
       state.candidates[num] = {}
       state.candidates[num] = data
       console.log('setResume', num, data, state.candidates)
+    },
+    set (state, { type, items }) {
+      state[type] = items
+    },
+    push (state, { type, items }) {
+      let ind = state[type].length
+      state[type][ind] = items
     }
   }
 })

@@ -60,6 +60,10 @@
     @include responsive(minTablet){font-size: 30px;}
     @include responsive(maxTablet){font-size: 23px;}
   }
+  h4{
+    @include responsive(minTablet){font-size: 23px;}
+    @include responsive(maxTablet){font-size: 20px;}
+  }
   img{
     max-width: 100%;
     height: auto;
@@ -125,6 +129,7 @@
     }
   }
   .form{
+    position: relative;
     &.box{
       @include responsive(minTablet){
         width: 350px;
@@ -144,6 +149,37 @@
       display: block;
       padding: 5px;
       width:100%;
+    }
+    &__message{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      color: #6a5acd;
+      font-style: italic;
+      box-sizing: border-box;
+      background: rgba(255, 255, 255, 0.9);
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 3s linear,  visibility 0.3s 0s linear;
+      &>*{
+        transform: scale(0.5);
+        transition: transform 0.3s linear;
+        position: relative;
+      }
+      &.show{
+        visibility: visible;
+        opacity: 1;
+        transition: opacity 0.3s linear,  visibility 0s 0s linear;
+        &>*{
+          transform: scale(1);
+        }
+      }
     }
   }
   .title{
