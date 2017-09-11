@@ -23,7 +23,7 @@ const store = new Vuex.Store({
     nav: {
       items: [
         {
-          name: 'Home',
+          name: 'Top',
           link: 'sectionTop'
         },
         {
@@ -31,16 +31,12 @@ const store = new Vuex.Store({
           link: 'sectionInfo'
         },
         {
-          name: 'FastStart',
+          name: 'Join to team',
           link: 'sectionForm'
         },
         {
           name: 'Team',
           link: 'sectionTeam'
-        },
-        {
-          name: 'Review',
-          link: 'sectionReview'
         }
       ]
     },
