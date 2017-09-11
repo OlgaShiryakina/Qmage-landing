@@ -116,7 +116,7 @@
     text-decoration: none !important;
     cursor: pointer;
     background: $color3;
-    &:hover{
+    &:hover, &.button:focus{
       color: #fff;
       border-radius: 10px;
       border-color: $color12;

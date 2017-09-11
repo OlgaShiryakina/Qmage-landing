@@ -1,26 +1,19 @@
 <template>
   <section id="sectionForm" class="sectionForm dark-grad">
     <div class="container">
-      <h2 class="title is-1 title__light">{{ team.form.title }}</h2>
+      <h2 class="title is-1 title__light">{{ joinTeam.title }}</h2>
       <div class="columns">
         <div class="column">
-          <div></div>
-          <ol>
-            <li>Розробник</li>
-            <li>менеджер</li>
-            <li>Розробник</li>
-            <li>менеджер</li>
-            <li>Розробник</li>
-            <li>менеджер</li>
-          </ol>
+          <div v-html="joinTeam.infoTop"></div>
           <ul>
-            <li v-for="candidate in candidates">
-              <div>{{ candidate.name }}</div>
+            <li v-for="item in joinTeam.vacancies">
+              <div>{{ item }}</div>
             </li>
           </ul>
+          <div v-html="joinTeam.infoBottom"></div>
         </div>
         <div class="column">
-          <form ref="candidateForm" class="form box">
+          <form @submit.prevent="submit" class="form box">
             <h3 class="form__title">Відправляй резюме</h3>
             <div class="field">
               <span class="label">Iм'я</span>
@@ -28,7 +21,7 @@
             </div>
             <div class="field">
               <span class="label">Email</span>
-              <input v-model="formData.email" type="email" class="input">
+              <input v-model="formData.email" type="email" class="input" required>
             </div>
             <div class="field">
               <span class="label">Супровідний текст</span>
@@ -43,7 +36,7 @@
                 <input  @change="onFileChange" type="file">
               </label>
             </div>
-            <input class="button button-default" type="submit" @click.prevent="sendResume">
+            <input class="button button-default" type="submit">
           </form>
         </div>
       </div>
@@ -67,9 +60,7 @@
     },
     computed: {
       ...mapGetters({
-        mainData: 'getMainData',
-        team: 'getTeam',
-        candidates: 'getCandidates'
+        joinTeam: 'getJoinTeam'
       })
     },
     methods: {
@@ -89,10 +80,10 @@
         }
         reader.readAsDataURL(file)
       },
-      sendResume () {
+      submit () {
+        console.log(this.formData)
         this.$store.dispatch('newResume', this.formData)
         this.resetData()
-        console.log('sendResume', this.formData)
       },
       resetData () {
         this.formData = {
