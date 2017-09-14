@@ -42,12 +42,21 @@
     .container {
       height: $headerHeight;
     }
+    .level {
+      @include responsive(maxTablet){
+        display: flex;
+    }
+    }
     .logo {
       font-size: 20px;
       align-items: center;
       width: 155px;
     }
     &__nav {
+      margin: 0;
+      @include responsive(maxTablet){
+        display: none !important;
+      }
       li {
         padding: 0 10px;
         margin: 0;

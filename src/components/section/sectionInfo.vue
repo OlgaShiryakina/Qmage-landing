@@ -1,31 +1,26 @@
 <template>
   <section id="sectionInfo" class="sectionInfo light_theme">
     <div class="container" >
-  <swiper :options="swiperOptionTop" class="gallery-top" :only-fade="false" ref="swiperTop">
-    <swiper-slide v-for="item in mainInfo.items" :label="item.link" >
-      <section class="hero is-primary hero-body box-item" >
-        <div class="level">
-          <div class="level-left">
-            <h2 class="title">{{ item.title }}</h2>
-            <div v-html="item.text"></div>
-          </div>
-        </div>
-        </section>
-    </swiper-slide>
-  </swiper>
-      <swiper class="gallery-thumbs" :options="swiperOptionThumbs" ref="swiperThumbs">
-        <swiper-slide v-for="item in mainInfo.items">
-          <span>{{item.link}}</span>
+      <!--<swiper :options="swiperOptionTop" class="gallery-top" :only-fade="false" ref="swiperTop">-->
+      <swiper :options="swiperMain" ref="swiperMain">
+        <swiper-slide v-for="item in mainInfo.items"  :label="item.link">
+          <h2 class="title">{{ item.title }}</h2>
+          <div v-html="item.text"></div>
         </swiper-slide>
+        <!--<div class="swiper-pagination" slot="pagination"></div>-->
       </swiper>
+      <!--<div class="swiper-pagination  swiper-pagination-bullets" ref="swiperNav"></div>-->
+      <slot name="pagination">
+        <div class="swiper-pagination  swiper-pagination-bullets" ref="swiperNav">
+          <span class="swiper-pagination-bullet 789" v-for="(item, index) in mainInfo.items" :title="item.link">{{ item.link }}</span>
+        </div>
+      </slot>
     </div>
   </section>
 
 </template>
 
 <script>
-  /* eslint-disable no-trailing-spaces */
-
   import { mapGetters } from 'vuex'
   import { Tabs, TabPane } from 'vue-bulma-tabs'
   require('swiper/dist/css/swiper.css')
@@ -43,44 +38,43 @@
     },
     data: function () {
       return {
-        swiperOptionTop: {
-          notNextTick: true,
-          nextButton: '.swiper-button-next',
-          prevButton: '.swiper-button-prev',
-          spaceBetween: 50,
-          direction: 'horizontal',
+        swiperMain: {
+          paginations: ['0', '1', '2', '4', '5'],
+          test: mapGetters({
+            mainInfo: 'getMainInfo'
+          }),
           effect: 'fade',
-          touchMoveStopPropagation: true,
-          hoverStopPropagation: true,
-          autoplay: 2500
-        },
-        swiperOptionThumbs: {
-          spaceBetween: 10,
-          touchRatio: 0.2,
-          slideToClickedSlide: true,
-          direction: 'horizontal'
+          loop: true,
+//          autoplay: 2500,
+//          paginationType: 'bullet',
+          pagination: '.swiper-pagination',
+          paginationClickable: true,
+          mousewheelControl: true
+//          paginationBulletRender (swiper, index, className) {
+//            let paginations = this.paginations
+//            console.log(this)
+//            return `<span class="${className} swiper-pagination-bullet-custom">${paginations[index]}</span>`
+//            // return '<span class="' + className + ' swiper-pagination-bullet-custom' + '">' + (index + 1) + '</span>';
+//          }
+//          paginationTitleRender: function (nr, item) {
+//            let title = this.paginations[nr]
+//            console.log(nr, item)
+//            return '<span class="' + title + '">' + title + '</span>'
+//          }
         }
-      }
-    },
-    mounted () {
-      const swiperTop = this.$refs.swiperTop.swiper
-      const swiperThumbs = this.$refs.swiperThumbs.swiper
-      swiperTop.params.control = swiperThumbs
-      swiperThumbs.params.control = swiperTop
-      swiperThumbs.container[0].onclick = function () {
-        swiperTop.stopAutoplay()
-      }
-      swiperTop.container[0].onmouseover = function () {
-        swiperTop.stopAutoplay()
-      }
-      swiperTop.container[0].onmouseout = function () {
-        swiperTop.startAutoplay()
       }
     },
     computed: {
       ...mapGetters({
         mainInfo: 'getMainInfo'
       })
+    },
+    mounted: function () {
+//      let nav = this.$refs.swiperNav
+//      let child = nav.querySelectorAll('span')
+//      for (let i = (child.length - 1); i > -1; i--) {
+//        child[i].innerHTML = this.mainInfo.items[i].link
+//      }
     }
   }
 </script>
@@ -89,6 +83,23 @@
   .sectionInfo{
     .level{
       align-items: flex-start;
+    }
+    .swiper{
+      &-container{
+        @include responsive(maxTablet){
+          padding: 0 0 25px 0;
+        }
+      }
+      &-pagination{
+        span{
+          cursor: pointer;
+          width: 20px;
+          height: 20px;
+        }
+      }
+      &-slide{
+        background: $color13;
+      }
     }
     .list-items{
       color: $color5;
@@ -99,18 +110,6 @@
     @include responsive(maxTablet){
       .title{
         font-size: 20px;
-      }
-    }
-    .swiper-container{
-      @include responsive(maxTablet){
-        padding: 0 0 25px 0;
-      }
-    }
-    & > .container{
-      display: flex;
-      flex-direction: row-reverse;
-      @include responsive(maxTablet){
-        flex-direction: column-reverse;
       }
     }
     .hero.is-primary{
@@ -170,7 +169,6 @@ box-shadow: none;
       max-width: 120px;
       text-transform: uppercase;
       border-radius: 5px;
-      font-weight: 500;
       background-color: #fff;
       font-size: 14px;
       line-height: 1.4;
@@ -248,14 +246,8 @@ box-shadow: none;
       width: 100%;
     }
   }
-
   .light_theme{
     background: $color13;
     padding: 70px 0;
   }
-  .swiper-container {
-    width: 100%;
-    height: 100% !important;
-  }
-
 </style>

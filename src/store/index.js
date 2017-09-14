@@ -3,6 +3,8 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
+// http://palcaugeorgiana.com/inspire/index-2.html
+// https://surmon-china.github.io/vue-awesome-swiper/
 const store = new Vuex.Store({
   state: {
     mainData: {
