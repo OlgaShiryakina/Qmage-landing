@@ -1,6 +1,6 @@
 <template>
   <section id="sectionInfo" class="sectionInfo light_theme">
-    <div class="container" >
+    <div class="container swiper">
       <!--<swiper :options="swiperOptionTop" class="gallery-top" :only-fade="false" ref="swiperTop">-->
       <swiper :options="swiperMain" ref="swiperMain">
         <swiper-slide v-for="item in mainInfo.items"  :label="item.link">
@@ -9,10 +9,10 @@
         </swiper-slide>
         <!--<div class="swiper-pagination" slot="pagination"></div>-->
       </swiper>
-      <!--<div class="swiper-pagination  swiper-pagination-bullets" ref="swiperNav"></div>-->
+      <div class="swiper-pagination  swiper-pagination-bullets" ref="swiperNav"></div>
       <slot name="pagination">
-        <div class="swiper-pagination  swiper-pagination-bullets" ref="swiperNav">
-          <span class="swiper-pagination-bullet 789" v-for="(item, index) in mainInfo.items" :title="item.link">{{ item.link }}</span>
+        <div class="swiper-pagination" ref="swiperNav">
+          <a class="swiper-pagination-bullet 789" v-for="(item, index) in mainInfo.items" :title="item.link">{{ item.link }}</a>
         </div>
       </slot>
     </div>
@@ -70,11 +70,11 @@
       })
     },
     mounted: function () {
-//      let nav = this.$refs.swiperNav
-//      let child = nav.querySelectorAll('span')
-//      for (let i = (child.length - 1); i > -1; i--) {
-//        child[i].innerHTML = this.mainInfo.items[i].link
-//      }
+      let nav = this.$refs.swiperNav
+      let child = nav.querySelectorAll('span')
+      for (let i = (child.length - 1); i > -1; i--) {
+        child[i].innerHTML = this.mainInfo.items[i].link
+      }
     }
   }
 </script>
@@ -85,16 +85,44 @@
       align-items: flex-start;
     }
     .swiper{
+      overflow: hidden;
       &-container{
+        @include responsive(minTablet){
+          width: calc(100% - 200px);
+          float: right;
+        }
         @include responsive(maxTablet){
-          padding: 0 0 25px 0;
+
         }
       }
       &-pagination{
+        @include responsive(minTablet){
+          width: 200px;
+          float: left;
+          text-align: left;
+        }
         span{
           cursor: pointer;
-          width: 20px;
-          height: 20px;
+          width: 160px;
+          height: 50px;
+          display: flex;
+          align-items: center;
+          border-radius: 3px;
+          font-weight: 500;
+          background: #fff;
+          font-size: 14px;
+          line-height: 1.2;
+          color: #000;
+          text-transform: uppercase;
+          justify-content: flex-start;
+          margin-bottom: 10px;
+          box-shadow: 0 7px 99px 0 rgba(58, 60, 65, 0.1);
+          padding: 10px;
+          box-sizing: border-box;
+          &.swiper-pagination-bullet-active{
+            background: $color1;
+            color: #fff;
+          }
         }
       }
       &-slide{
@@ -119,109 +147,6 @@
       }
     }
   }
-  .gallery-top{
-    background: #fff;
-    border-radius: 10px;
-    .swiper-slide{
-      opacity: 0 !important;
-      transition: all .354443335s cubic-bezier(0.4, 0, 1, 1) !important;
-      .is-primary{
-box-shadow: none;
-        border:none;
-      }
-    }
-    .swiper-slide-active{
-      opacity: 1 !important;
-    }
-  }
-.gallery-thumbs{
-  width: 200px !important;
-    @include responsive(maxTablet){
-      height: inherit !important;
-      width:100% !important;
-      text-align: center;
-
-  }
-  .swiper-wrapper{
-    transform: none !important;
-    display: flex;
-    flex-direction: column;
-    @include responsive(maxTablet){
-      flex-direction: row;
-      justify-content: center;
-      flex-wrap: wrap;
-
-    }
-  }
-  .swiper-slide{
-    max-width:165px !important;
-    min-height:60px;
-    height: initial;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin:0 !important;
-    span{
-      white-space: normal;
-      word-break: break-word;
-      padding: 10px 15px;
-      min-width:120px;
-      max-width: 120px;
-      text-transform: uppercase;
-      border-radius: 5px;
-      background-color: #fff;
-      font-size: 14px;
-      line-height: 1.4;
-      margin: 0;
-      font-weight: bold;
-      position: relative;
-      z-index: 2;
-      border: 1px solid #ededed;
-      cursor: pointer;
-      @include responsive(maxTablet){
-        height: 70%;
-        display: flex;
-        align-items: center;
-        line-height: 1.2;
-      }
-      @media screen and (max-width:555px){
-        padding: 5px;
-        font-size:12px;
-        text-align: center;
-        justify-content: center;
-      }
-    }
-  }
-  .swiper-slide-active{
-    span{
-      background: $color14;
-      color: $color0;
-      position: relative;
-      &:before{
-        display: block;
-        content: '';
-        top:40%;
-        right: -5px;
-        position: absolute;
-        width: 0;
-        height: 0;
-        border-top: 5px solid transparent;
-        border-left: 5px solid $color14;
-        border-bottom: 5px solid transparent;
-        @include responsive(maxTablet) {
-          bottom: -5px;
-          top:initial;
-          left: calc(50% - 5px);
-          border-left: 5px solid transparent;
-          border-right: 5px solid transparent;
-          border-top: 5px solid $color14;
-          border-bottom:initial;
-        }
-      }
-    }
-
-  }
-}
   .level{
     .subtitle{
       color: #6e717f !important;
