@@ -39,13 +39,16 @@
   }
   body {
     margin: 0;
-    font: 14px/1.5 Arial, sans-serif;
+    font: 14px/1.5 $mainFont;
     overflow-x: hidden;
     word-wrap: break-word;
   }
   h1, h2, h3, h4, h5, h6{
     line-height: 1 !important;
     font-weight: 400 !important;
+  }
+  h2, h3, h4, h5, h6{
+    font-family: $titleFont;
   }
   h1{
     @include responsive(minMedium){font-size: 84px;}

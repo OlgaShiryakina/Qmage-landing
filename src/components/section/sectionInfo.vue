@@ -1,7 +1,7 @@
 <template>
   <section id="sectionInfo" class="sectionInfo light_theme">
     <div class="">
-      <carousel-3d :inverse-scaling="800" :autoplay="true" :autoplay-timeout="3000" :display="3" :space="800" :width="760">
+      <carousel-3d :inverse-scaling="800" :autoplay="true" :autoplay-timeout="6000" :display="3" :space="800" :width="760">
         <slide  v-for="(item, index) in mainInfo.items" :index="index">
           <div>
             <h2 class="title">{{ item.title }}</h2>
@@ -47,6 +47,8 @@
       background: $color0;
       border: 0;
       box-shadow: inset 0 0 5px 6px rgba(0, 0, 0, 0.15);
+      cursor: pointer;
+      &.current{cursor: default;}
       @include responsive(minTablet){height: 400px !important;}
       @include responsive(phone){height: 600px !important;}
       @include responsive(maxPhone){height: 800px !important;}

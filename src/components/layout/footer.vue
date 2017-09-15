@@ -7,7 +7,8 @@
           <span class="icon is-small">
             <i class="fa fa-phone"></i>
           </span>
-          {{ item.name }} : {{ item.phone }}
+          <strong>{{ item.name }} :</strong>
+          <span>{{ item.phone }}</span>
         </li>
         <li>
           <span class="icon is-small">
@@ -44,9 +45,16 @@
     }
     &__logo{
       width: 155px;
+      @include responsive(maxTablet){margin: 0 auto;}
     }
     &__phones{
       margin: 0;
+      @include responsive(maxTablet){margin: 20px auto 0;display: table;}
+      strong{
+        color: inherit;
+        width: 42px;
+        display: inline-block;
+      }
     }
   }
 </style>

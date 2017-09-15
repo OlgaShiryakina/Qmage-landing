@@ -9,7 +9,7 @@ const store = new Vuex.Store({
   state: {
     mainData: {
       title: 'Console24',
-      slogan: 'Повний і легкий контроль за <br> вашої електронною комерцією!',
+      slogan: 'Повний і легкий контроль за вашою електронною комерцією!',
       phones: [
         {
           name: 'MTC',
@@ -43,7 +43,7 @@ const store = new Vuex.Store({
       ]
     },
     formSubscribe: {
-      title: 'Дізнайся про дату запуску першим',
+      title: 'Дізнайся про дату <br>запуску першим',
       button: 'отримати повідомлення поштою',
       success: '<h4>Дякуємо за підписку</h4>',
       error: '<h4>Такий email у нас вже є</h4>'

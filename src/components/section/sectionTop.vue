@@ -6,7 +6,7 @@
         <div class="sectionTop__slogan" v-html="mainData.slogan"></div>
       </div>
       <form @submit.prevent="submit" class="form box">
-        <h3 class="form__title">{{ formSubscribe.title }}</h3>
+        <h3 class="form__title" v-html="formSubscribe.title"></h3>
         <div class="field">
           <input required title="наприклад main@mail.com" pattern="^[^@]+@[^@.]+\.[^@]+$" class="input" type="email" placeholder="Email" v-model="newSubscribe">
         </div>
@@ -116,20 +116,12 @@
       @include responsive(minTablet){padding-bottom: 10%;}
     }
     &__slogan{
+      font-family: $titleFont;
       @include responsive(minMedium){
         font-size: 20px;
-        line-height: 0.8;
-        letter-spacing: 4px;
-        margin: -9px 0 0 3px;
-        text-align: justify;
-        -moz-text-align-last: justify;
-        text-align-last: justify;
       }
       @include responsive(tablet){
         font-size: 18px;
-        line-height: 0.9;
-        letter-spacing: 2px;
-        margin: -5px 0 0 3px;
       }
     }
   }
