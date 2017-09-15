@@ -123,6 +123,10 @@
       box-shadow: 0 7px 23px 0 rgba(58, 60, 65, 0.2);
     }
   }
+  .light_theme{
+    background: $color13;
+    padding: 70px 0;
+  }
   .input{
     &:focus{
       border-color: #5c42ff;
