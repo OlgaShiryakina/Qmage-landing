@@ -47,9 +47,6 @@
     line-height: 1 !important;
     font-weight: 400 !important;
   }
-  h2, h3, h4, h5, h6{
-    font-family: $titleFont;
-  }
   h1{
     @include responsive(minMedium){font-size: 84px;}
     @include responsive(tablet){font-size: 67px;}

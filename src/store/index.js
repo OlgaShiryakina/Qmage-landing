@@ -10,6 +10,7 @@ const store = new Vuex.Store({
     mainData: {
       title: 'Console24',
       slogan: 'Повний і легкий контроль за вашою електронною комерцією!',
+      deadline: 'August 22, 2022',
       phones: [
         {
           name: 'MTC',

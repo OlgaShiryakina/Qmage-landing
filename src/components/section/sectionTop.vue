@@ -1,9 +1,12 @@
 <template>
   <section id="sectionTop" class="sectionTop dark-grad">
     <div class="container level">
-      <div>
+      <div class="sectionTop__left">
         <h1>{{ mainData.title }}</h1>
         <div class="sectionTop__slogan" v-html="mainData.slogan"></div>
+        <div class="sectionTop__timer">
+          <Countdown :deadline="mainData.deadline"></Countdown>
+        </div>
       </div>
       <form @submit.prevent="submit" class="form box">
         <h3 class="form__title" v-html="formSubscribe.title"></h3>
@@ -21,8 +24,10 @@
 </template>
 <script>
   import { mapGetters } from 'vuex'
+  import Countdown from 'vuejs-countdown'
 
   export default{
+    components: { Countdown },
     data () {
       return {
         newSubscribe: '',
@@ -79,6 +84,12 @@
 
 <style lang="scss">
   @import '../../scss/variables';
+  .vue-countdown .digit {
+    @include responsive(minTablet){
+      font-size: 53px !important;
+      line-height: 1.1 !important;
+    }
+  }
   .level-left{
     width:50%;
   }
@@ -115,14 +126,26 @@
       padding-top: 10%;
       @include responsive(minTablet){padding-bottom: 10%;}
     }
+    &__left{
+      @include responsive(maxTablet){
+        display: table;
+        text-align: center;
+        margin: 0 auto;
+      }
+    }
     &__slogan{
-      font-family: $titleFont;
       @include responsive(minMedium){
         font-size: 20px;
       }
       @include responsive(tablet){
         font-size: 18px;
       }
+      @include responsive(maxTablet){
+        width: 260px;
+      }
+    }
+    &__timer{
+      margin-top: 10%;
     }
   }
 </style>

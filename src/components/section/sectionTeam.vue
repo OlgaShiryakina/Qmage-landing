@@ -89,7 +89,6 @@
       &__name{
         font-size: 23px;
         color: #000;
-        font-family: $titleFont;
       }
       &__position{
         font-size:12px;
