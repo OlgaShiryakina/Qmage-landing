@@ -48,6 +48,12 @@ const store = new Vuex.Store({
       success: '<h4>Дякуємо за підписку</h4>',
       error: '<h4>Такий email у нас вже є</h4>'
     },
+    formResume: {
+      title: 'Відправляй резюме',
+      button: 'Відправити',
+      success: '<h4>Success</h4>',
+      error: '<h4>error</h4>'
+    },
     subscribers: [],
     mainInfo: {
       items: [
@@ -111,6 +117,9 @@ const store = new Vuex.Store({
     getSubscribe (state) {
       return state.formSubscribe
     },
+    getResume (state) {
+      return state.formResume
+    },
     getSubscribers (state) {
       return state.subscribers
     },
@@ -129,20 +138,10 @@ const store = new Vuex.Store({
       commit('push', { type: 'subscribers', items: value })
     },
     newResume: function ({commit}, value) {
-      console.log('newResume')
-      // commit('setResume', data)
       commit('push', { type: 'candidates', items: value })
     }
   },
   mutations: {
-    setResume: function (state, data) {
-      let num = state.candidates.length
-      state.candidates[num] = {}
-      state.candidates[num] = data
-    },
-    set (state, { type, items }) {
-      state[type] = items
-    },
     push (state, { type, items }) {
       let ind = state[type].length
       state[type][ind] = items

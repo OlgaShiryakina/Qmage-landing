@@ -14,7 +14,7 @@
         </div>
         <div class="column">
           <form @submit.prevent="submit" class="form box">
-            <h3 class="form__title">Відправляй резюме</h3>
+            <h3 class="form__title">{{ formResume.title }}</h3>
             <div class="field">
               <span class="label">Iм'я</span>
               <input v-model="formData.name" type="text" class="input">
@@ -36,7 +36,11 @@
                 <input  @change="onFileChange" type="file">
               </label>
             </div>
-            <input class="button button-default" type="submit">
+            <input class="button button-default" type="submit" :value="formResume.button">
+            <div :class="{ show: show }" class="form__message">
+              <div v-if="successForm" v-html="formResume.success"></div>
+              <div v-else v-html="formResume.error"></div>
+            </div>
           </form>
         </div>
       </div>
@@ -55,12 +59,15 @@
           message: '',
           file: '',
           fileName: ''
-        }
+        },
+        successForm: false,
+        show: false
       }
     },
     computed: {
       ...mapGetters({
-        joinTeam: 'getJoinTeam'
+        joinTeam: 'getJoinTeam',
+        formResume: 'getResume'
       })
     },
     methods: {
@@ -81,8 +88,9 @@
         reader.readAsDataURL(file)
       },
       submit () {
-        console.log(this.formData)
         this.$store.dispatch('newResume', this.formData)
+        this.successForm = true
+        this.showMessage()
         this.resetData()
       },
       resetData () {
@@ -93,6 +101,13 @@
           file: '',
           fileName: ''
         }
+      },
+      showMessage () {
+        let vm = this
+        vm.show = true
+        setTimeout(function () {
+          vm.show = false
+        }, 3000)
       }
     }
   }
