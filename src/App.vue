@@ -6,6 +6,7 @@
       <section-info></section-info>
       <section-form></section-form>
       <section-team></section-team>
+      <section-learn></section-learn>
     </div>
     <block-footer></block-footer>
   </div>
@@ -17,6 +18,7 @@
   import sectionInfo from '@/components/section/sectionInfo.vue'
   import sectionForm from '@/components/section/sectionForm.vue'
   import sectionTeam from '@/components/section/sectionTeam.vue'
+  import sectionLearn from '@/components/section/sectionLearn.vue'
   import blockFooter from '@/components/layout/footer.vue'
 
   export default {
@@ -27,6 +29,7 @@
       sectionForm,
       sectionTop,
       sectionTeam,
+      sectionLearn,
       blockFooter
     }
   }
