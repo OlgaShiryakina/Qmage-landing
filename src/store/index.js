@@ -157,12 +157,14 @@ const store = new Vuex.Store({
     },
     newResume: function ({commit}, value) {
       commit('push', { type: 'candidates', items: value })
+    },
+    addCustomField: function ({commit}, value) {
+      commit('push', { type: 'customFields', items: value })
     }
   },
   mutations: {
     push (state, { type, items }) {
-      let ind = state[type].length
-      state[type][ind] = items
+      state[type].push(items)
     }
   }
 })
