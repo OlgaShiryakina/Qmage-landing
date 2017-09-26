@@ -120,6 +120,23 @@ const store = new Vuex.Store({
         name: 'Большаков Вячеслав',
         info: 'Різні версії Lorem Ipsum з&#8242;явились за минулі роки, деякі випадково, деякі було створено зумисно (зокрема, жартівливі).'
       }
+    ],
+    fields: [
+      {
+        label: 'Name',
+        data: '',
+        required: true
+      },
+      {
+        label: 'Surname',
+        data: '',
+        required: true
+      },
+      {
+        label: 'Last Name',
+        data: '',
+        required: true
+      }
     ]
   },
   getters: {
@@ -149,6 +166,9 @@ const store = new Vuex.Store({
     },
     getComments (state) {
       return state.comments
+    },
+    getFields (state) {
+      return state.fields
     }
   },
   actions: {
@@ -158,13 +178,17 @@ const store = new Vuex.Store({
     newResume: function ({commit}, value) {
       commit('push', { type: 'candidates', items: value })
     },
-    addCustomField: function ({commit}, value) {
-      commit('push', { type: 'customFields', items: value })
+    setField: function ({commit}, value) {
+      commit('set', { type: 'fields', items: value })
     }
   },
   mutations: {
     push (state, { type, items }) {
       state[type].push(items)
+    },
+    set (state, { type, items }) {
+      state[type] = items
+      JSON.parse(JSON.stringify(state[type]))
     }
   }
 })

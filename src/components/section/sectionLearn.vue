@@ -6,7 +6,7 @@
         <div class="comments__container">
           <div class="field" v-for="item in fields">
             <span class="label">{{ item.label }}</span>
-            <input v-model="item.data" type="text" required="required" class="input">
+            <input v-model="item.data" type="text" :required="item.required" class="input">
           </div>
         </div>
 
@@ -14,7 +14,7 @@
           <div class="comments__custom__item" v-for="item in customFields">
             <div class="field">
               <span class="label">{{ customLabels.first }}</span>
-              <input v-model="item.name" type="text" required="required" class="input">
+              <input v-model="item.label" type="text" required="required" class="input">
             </div>
             <div class="field">
               <span class="label">{{ customLabels.second }}</span>
@@ -32,23 +32,11 @@
 </template>
 
 <script>
+  import { mapGetters } from 'vuex'
+
   export default {
     data () {
       return {
-        fields: [
-          {
-            label: 'Name',
-            data: ''
-          },
-          {
-            label: 'Surname',
-            data: ''
-          },
-          {
-            label: 'Last Name',
-            data: ''
-          }
-        ],
         customFields: [],
         customLabels: {
           first: 'Field name',
@@ -56,17 +44,29 @@
         }
       }
     },
+    computed: {
+      ...mapGetters({
+        fields: 'getFields'
+      })
+    },
     methods: {
       resetData () {
-        for (let [key, value] of this.fields) {
-          console.log(key, value)
-        }
+//        for (let [key, value] of this.fields) {
+//          console.log(key, value)
+//        }
+        this.customFields = []
       },
       addNew () {
         this.customFields.push({
-          label: 'Name',
-          data: ''
+          label: '',
+          data: '',
+          required: false
         })
+      },
+      submit () {
+        let formData = [...this.fields, ...this.customFields]
+        this.$store.dispatch('setField', formData)
+        this.resetData()
       }
     }
   }
