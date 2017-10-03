@@ -1,12 +1,13 @@
 <template>
-  <section class="sectionForm dark-grad comments">
+  <section class="dark-grad comments">
     <div class="container">
       <h2 class="title is-1 title__light">Form</h2>
       <form @submit.prevent="submit" class="comments__form">
         <div class="comments__container">
-          <div class="field" v-for="item in fields">
-            <span class="label">{{ item.label }}</span>
-            <input v-model="item.data" type="text" :required="item.required" class="input">
+          <div class="field" v-for="(item, index) in fields">
+            <actions v-if="item.editable"></actions>
+            <span class="label">{{ item.label }} {{ item.required }}</span>
+            <input v-model="item.data" type="text" class="input" :required="item.required">
           </div>
         </div>
 
@@ -14,18 +15,18 @@
           <div class="comments__custom__item" v-for="item in customFields">
             <div class="field">
               <span class="label">{{ customLabels.first }}</span>
-              <input v-model="item.label" type="text" required="required" class="input">
+              <input v-model="item.label" type="text" class="input">
             </div>
             <div class="field">
               <span class="label">{{ customLabels.second }}</span>
-              <input v-model="item.data" type="text" required="required" class="input">
+              <input v-model="item.data" type="text" class="input">
             </div>
           </div>
         </div>
-        <div class="field">
-          <a @click="addNew" class="button button-default">add new field</a>
+        <div class="buttons is-flex">
+          <input class="button button-default" type="submit">
+          <a @click="addNew" class="button button-default">Add new field</a>
         </div>
-        <input class="button button-default" type="submit">
       </form>
     </div>
   </section>
@@ -34,7 +35,12 @@
 <script>
   import { mapGetters } from 'vuex'
 
+  import actions from '@/components/layout/actions.vue'
+
   export default {
+    components: {
+      actions
+    },
     data () {
       return {
         customFields: [],
@@ -60,14 +66,28 @@
         this.customFields.push({
           label: '',
           data: '',
-          required: false
+          required: false,
+          editable: true
         })
       },
       submit () {
         let formData = [...this.fields, ...this.customFields]
+        console.log(formData)
         this.$store.dispatch('setField', formData)
         this.resetData()
+      },
+      openActions (e) {
+        e.target.parentElement.classList.toggle('open')
+      },
+      deleteItem (e) {
+
       }
+//      submit (e) {
+//        let formData = new FormData(e)
+//        let data = getFormData(e)
+//        console.log(JSON.stringify(data))
+//        console.log(elements)
+//      }
     }
   }
 </script>
@@ -75,6 +95,8 @@
 <style lang="scss" scoped="">
   @import '../../scss/variables';
   .comments{
+    background-image: url("../../assets/bg1.jpg");
+    @extend .imageCoverFixed;
     strong, .label{
       color: inherit;
     }
@@ -85,13 +107,16 @@
       }
     }
   }
-  .field{
+  .field, .buttons{
     width: 400px;
     margin: 0 auto 15px;
+  }
+  .buttons{
+    margin-top: 21px;
+    justify-content: space-between;
     .button{
-      width: 100%;
+      width: 45%;
       padding: 9px 45px;
-      margin-top: 21px;
     }
   }
 </style>

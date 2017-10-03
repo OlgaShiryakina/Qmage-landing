@@ -125,17 +125,20 @@ const store = new Vuex.Store({
       {
         label: 'Name',
         data: '',
-        required: true
+        required: true,
+        editable: false
       },
       {
         label: 'Surname',
         data: '',
-        required: true
+        required: true,
+        editable: true
       },
       {
         label: 'Last Name',
         data: '',
-        required: true
+        required: true,
+        editable: true
       }
     ]
   },
