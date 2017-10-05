@@ -1,9 +1,9 @@
 <template>
-  <div class="actions" v-on-clickaway="away">
-    <a class="fa fa-cog actions-link" @click="myClick"></a>
+  <div class="actions" v-on-clickaway="closeActions">
+    <a class="fa fa-cog actions-link" @click="openActions"></a>
     <div class="actions-container">
       <a class="fa fa-pencil"></a>
-      <a class="fa fa-trash"></a>
+      <a class="fa fa-trash" @click="someDelete"></a>
     </div>
   </div>
 </template>
@@ -16,6 +16,7 @@
     directives: {
       onClickaway: onClickaway
     },
+    props: ['index'],
     data () {
       return {
       }
@@ -30,11 +31,7 @@
       // this.$el.removeEventListener('click', this.onClick)
     },
     methods: {
-      toggleActions () {
-        console.log('toggleActions')
-        this.$el.classList.toggle('open')
-      },
-      onClick: function (e) {
+      onClick (e) {
 //        console.log(ev.offsetX, ev.offsetY)
         if (this.$el === e.target.parentElement) {
           console.log('if onClick')
@@ -43,13 +40,14 @@
         }
         console.log('onClick', this.$el, e.target.parentElement)
       },
-      myClick: function (e) {
+      openActions (e) {
         this.$el.classList.add('open')
-        console.log('You clicked on me!', this.$el, e.target.parentElement)
       },
-      away: function (e) {
+      closeActions (e) {
         this.$el.classList.remove('open')
-        console.log('You clicked away...', this.$el, e.target.parentElement)
+      },
+      someDelete () {
+        this.$parent.$options.methods.deleteItem(this)
       }
     }
   }

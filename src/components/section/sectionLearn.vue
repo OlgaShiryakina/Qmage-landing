@@ -5,7 +5,7 @@
       <form @submit.prevent="submit" class="comments__form">
         <div class="comments__container">
           <div class="field" v-for="(item, index) in fields">
-            <actions v-if="item.editable"></actions>
+            <actions v-if="item.editable" :index="index"></actions>
             <span class="label">{{ item.label }} {{ item.required }}</span>
             <input v-model="item.data" type="text" class="input" :required="item.required">
           </div>
@@ -55,6 +55,18 @@
         fields: 'getFields'
       })
     },
+    mounted () {
+//      window.localStorage.setItem('myData', JSON.stringify(this.customLabels))
+      let defaultToken = JSON.parse(window.localStorage.getItem('myData'))
+      if (defaultToken) {
+        this.$store.dispatch('setField', defaultToken)
+//        JSON.parse(localStorage.getItem('default_auth_token') || '[]')
+//        window.localStorage.removeItem('myData')
+        console.log(true, window.localStorage['myData'])
+      } else {
+        console.log(false, window.localStorage['myData'])
+      }
+    },
     methods: {
       resetData () {
 //        for (let [key, value] of this.fields) {
@@ -74,20 +86,15 @@
         let formData = [...this.fields, ...this.customFields]
         console.log(formData)
         this.$store.dispatch('setField', formData)
+        window.localStorage.setItem('myData', JSON.stringify(formData))
         this.resetData()
       },
       openActions (e) {
-        e.target.parentElement.classList.toggle('open')
+        e.target.parentElement.classList.add('open')
       },
-      deleteItem (e) {
-
+      deleteItem (i) {
+        console.log(i, this.$store)
       }
-//      submit (e) {
-//        let formData = new FormData(e)
-//        let data = getFormData(e)
-//        console.log(JSON.stringify(data))
-//        console.log(elements)
-//      }
     }
   }
 </script>
